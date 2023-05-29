@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/card_bg"
         android:orientation="vertical"
-        android:paddingHorizontal="38dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -63,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginRight="242dp"
+            android:layout_marginHorizontal="38dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Username"
             android:textColor="@color/black"></TextView>
@@ -71,6 +70,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="38dp"
             android:background="@drawable/edittext_bg">
 
             <ImageView
@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginRight="242dp"
+            android:layout_marginHorizontal="38dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Password"
             android:textColor="@color/black"></TextView>
@@ -113,6 +113,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="38dp"
             android:background="@drawable/edittext_bg">
 
             <ImageView
@@ -160,6 +161,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_medium"
+            android:layout_marginHorizontal="38dp"
             android:text="Forgot Password?"
             android:textAlignment="textEnd"
             android:textSize="11.5sp" />
@@ -171,6 +173,7 @@
             android:fontFamily="@font/poppins_medium"
             android:text="Sign in"
             android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="38dp"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp" />
