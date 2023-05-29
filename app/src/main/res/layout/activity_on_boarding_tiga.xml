@@ -128,16 +128,18 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"></TextView>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="260dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="44dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Next"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/button_next"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
