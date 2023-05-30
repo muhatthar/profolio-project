@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Profolio"
         tools:targetApi="31">
         <activity
+            android:name=".homepage.HomePageActivity"
+            android:exported="false" />
+        <activity
             android:name=".register.RegisterPageActivity"
             android:exported="false" />
         <activity
