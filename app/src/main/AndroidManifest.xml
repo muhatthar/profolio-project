@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Profolio"
         tools:targetApi="31">
         <activity
+            android:name=".register.RegisterPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginPageActivity"
             android:exported="false" />
         <activity

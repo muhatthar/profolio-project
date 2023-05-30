@@ -1,4 +1,4 @@
-package com.example.profolio.login;
+package com.example.profolio.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,19 +10,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.profolio.R;
-import com.example.profolio.register.RegisterPageActivity;
+import com.example.profolio.login.LoginPageActivity;
 
-public class LoginPageActivity extends AppCompatActivity {
+public class RegisterPageActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
-    private TextView signUp;
-
+    private TextView signIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.activity_register_page);
 
-        signUp = findViewById(R.id.signUp);
-        linearLayout = findViewById(R.id.loginPage);
+        signIn = findViewById(R.id.signIn);
+        linearLayout = findViewById(R.id.registerPage);
         linearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -42,9 +41,8 @@ public class LoginPageActivity extends AppCompatActivity {
                 animator.start();
             }
         });
-
-        signUp.setOnClickListener(v -> {
-            Intent next = new Intent(this, RegisterPageActivity.class);
+        signIn.setOnClickListener(v -> {
+            Intent next = new Intent(this, LoginPageActivity.class);
             startActivity(next);
         });
     }
