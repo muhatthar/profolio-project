@@ -125,6 +125,7 @@ public class RegisterPageActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
+                            Toast.makeText(RegisterPageActivity.this, "Password should be at least 6 characters", Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
                     }
