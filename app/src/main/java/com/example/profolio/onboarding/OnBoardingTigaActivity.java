@@ -14,7 +14,7 @@ import com.example.profolio.R;
 import com.example.profolio.login.LoginPageActivity;
 
 public class OnBoardingTigaActivity extends AppCompatActivity {
-    private CardView cardView3;
+    private LinearLayout cardView3;
     private AppCompatButton btn_next3;
 
     @Override
