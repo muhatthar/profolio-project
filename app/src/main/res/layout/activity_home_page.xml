@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homepage.HomePageActivity"
-    android:background="@drawable/on_boarding_2">
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="halo"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    android:background="@drawable/on_boarding_2"
+    tools:context=".homepage.HomePageActivity">
 
     <LinearLayout
         android:id="@+id/navbarLayout"
@@ -25,108 +15,236 @@
         android:elevation="10dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:weightSum="4"
+        android:weightSum="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/homeLayout"
-            android:background="@drawable/round_back"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_weight="1">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/homeNavbar"
+                android:layout_width="72dp"
+                android:layout_height="4dp"
+                android:background="@drawable/navbar_selected"
+                android:orientation="horizontal">
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/homeImage"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/ic_homepage_selected"/>
+                android:src="@drawable/ic_homepage" />
 
             <TextView
                 android:id="@+id/homeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Home"
-                android:layout_marginStart="10dp"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/roboto_regular"/>
+                android:textColor="#4B4B4B"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/documentLayout"
-            android:background="@android:color/transparent"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_weight="1">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/documentNavbar"
+                android:layout_width="72dp"
+                android:layout_height="4dp"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal">
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/documentImage"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/ic_document"/>
+                android:src="@drawable/ic_document" />
 
             <TextView
                 android:id="@+id/documentText"
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Document"
-                android:layout_marginStart="10dp"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/roboto_regular"/>
+                android:textColor="#4B4B4B"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/profileLayout"
-            android:background="@android:color/transparent"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_weight="1">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/profileNavbar"
+                android:layout_width="72dp"
+                android:layout_height="4dp"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal">
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/profileImage"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/ic_profile"/>
+                android:src="@drawable/ic_profile" />
 
             <TextView
                 android:id="@+id/profileText"
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Profile"
-                android:layout_marginStart="10dp"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/roboto_regular"/>
+                android:textColor="#4B4B4B"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
+
     </LinearLayout>
+
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/navbarLayout"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@drawable/navbar_bg"-->
+    <!--        android:elevation="10dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:paddingTop="10dp"-->
+    <!--        android:paddingBottom="10dp"-->
+    <!--        android:layout_marginBottom="24dp"-->
+    <!--        android:layout_marginStart="24dp"-->
+    <!--        android:layout_marginEnd="24dp"-->
+    <!--        android:weightSum="4"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:id="@+id/homeLayout"-->
+    <!--            android:background="@drawable/round_back"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="45dp"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:paddingStart="5dp"-->
+    <!--            android:paddingEnd="5dp"-->
+    <!--            android:gravity="center"-->
+    <!--            android:layout_weight="1">-->
+
+    <!--            <ImageView-->
+    <!--                android:id="@+id/homeImage"-->
+    <!--                android:layout_width="20dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:adjustViewBounds="true"-->
+    <!--                android:src="@drawable/ic_homepage_selected"/>-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/homeText"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="Home"-->
+    <!--                android:layout_marginStart="10dp"-->
+    <!--                android:textSize="16sp"-->
+    <!--                android:textColor="@color/white"-->
+    <!--                android:fontFamily="@font/roboto_regular"/>-->
+
+    <!--        </LinearLayout>-->
+
+    <!--        <LinearLayout-->
+    <!--            android:id="@+id/documentLayout"-->
+    <!--            android:background="@android:color/transparent"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="45dp"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:paddingStart="5dp"-->
+    <!--            android:paddingEnd="5dp"-->
+    <!--            android:gravity="center"-->
+    <!--            android:layout_weight="1">-->
+
+    <!--            <ImageView-->
+    <!--                android:id="@+id/documentImage"-->
+    <!--                android:layout_width="20dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:adjustViewBounds="true"-->
+    <!--                android:src="@drawable/ic_document"/>-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/documentText"-->
+    <!--                android:visibility="gone"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="Document"-->
+    <!--                android:layout_marginStart="10dp"-->
+    <!--                android:textSize="16sp"-->
+    <!--                android:textColor="@color/white"-->
+    <!--                android:fontFamily="@font/roboto_regular"/>-->
+
+    <!--        </LinearLayout>-->
+
+    <!--        <LinearLayout-->
+    <!--            android:id="@+id/profileLayout"-->
+    <!--            android:background="@android:color/transparent"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="45dp"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:paddingStart="5dp"-->
+    <!--            android:paddingEnd="5dp"-->
+    <!--            android:gravity="center"-->
+    <!--            android:layout_weight="1">-->
+
+    <!--            <ImageView-->
+    <!--                android:id="@+id/profileImage"-->
+    <!--                android:layout_width="20dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:adjustViewBounds="true"-->
+    <!--                android:src="@drawable/ic_profile"/>-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/profileText"-->
+    <!--                android:visibility="gone"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="Profile"-->
+    <!--                android:layout_marginStart="10dp"-->
+    <!--                android:textSize="16sp"-->
+    <!--                android:textColor="@color/white"-->
+    <!--                android:fontFamily="@font/roboto_regular"/>-->
+
+    <!--        </LinearLayout>-->
+
+    <!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

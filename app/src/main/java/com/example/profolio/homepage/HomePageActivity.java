@@ -16,6 +16,7 @@ import com.example.profolio.R;
 
 public class HomePageActivity extends AppCompatActivity {
     private int selectedtab = 1;
+    private int defaultTextColor;
     private LinearLayout linearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,10 @@ public class HomePageActivity extends AppCompatActivity {
         final LinearLayout homeLayout = findViewById(R.id.homeLayout);
         final LinearLayout documentLayout = findViewById(R.id.documentLayout);
         final LinearLayout profileLayout = findViewById(R.id.profileLayout);
+
+        final LinearLayout homeNavbar = findViewById(R.id.homeNavbar);
+        final LinearLayout documentNavbar = findViewById(R.id.documentNavbar);
+        final LinearLayout profileNavbar = findViewById(R.id.profileNavbar);
 
         final ImageView homeImage = findViewById(R.id.homeImage);
         final ImageView documentImage = findViewById(R.id.documentImage);
@@ -36,6 +41,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         linearLayout = findViewById(R.id.navbarLayout);
 
+        defaultTextColor = homeText.getCurrentTextColor();
         linearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -58,23 +64,26 @@ public class HomePageActivity extends AppCompatActivity {
 
         homeLayout.setOnClickListener(v -> {
             if (selectedtab != 1) {
-                documentText.setVisibility(View.GONE);
-                profileText.setVisibility(View.GONE);
+//                documentText.setVisibility(View.GONE);
+//                profileText.setVisibility(View.GONE);
 
                 documentImage.setImageResource(R.drawable.ic_document);
                 profileImage.setImageResource(R.drawable.ic_profile);
 
-                documentLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                profileLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                documentNavbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                profileNavbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
-                homeText.setVisibility(View.VISIBLE);
+                documentText.setTextColor(defaultTextColor);
+                profileText.setTextColor(defaultTextColor);
+
+                homeText.setTextColor(getResources().getColor(R.color.colorSecondary));
                 homeImage.setImageResource(R.drawable.ic_homepage_selected);
-                homeLayout.setBackgroundResource(R.drawable.round_back);
+                homeNavbar.setBackgroundResource(R.drawable.navbar_selected);
 
                 ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                 scaleAnimation.setDuration(200);
                 scaleAnimation.setFillAfter(true);
-                homeLayout.startAnimation(scaleAnimation);
+                homeNavbar.startAnimation(scaleAnimation);
 
                 selectedtab = 1;
             }
@@ -82,23 +91,26 @@ public class HomePageActivity extends AppCompatActivity {
 
         documentLayout.setOnClickListener(v -> {
             if (selectedtab != 2) {
-                homeText.setVisibility(View.GONE);
-                profileText.setVisibility(View.GONE);
+//                homeText.setVisibility(View.GONE);
+//                profileText.setVisibility(View.GONE);
 
                 homeImage.setImageResource(R.drawable.ic_homepage);
                 profileImage.setImageResource(R.drawable.ic_profile);
 
-                homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                profileLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                homeNavbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                profileNavbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
-                documentText.setVisibility(View.VISIBLE);
+                homeText.setTextColor(defaultTextColor);
+                profileText.setTextColor(defaultTextColor);
+
+                documentText.setTextColor(getResources().getColor(R.color.colorSecondary));
                 documentImage.setImageResource(R.drawable.ic_document_selected);
-                documentLayout.setBackgroundResource(R.drawable.round_back);
+                documentNavbar.setBackgroundResource(R.drawable.navbar_selected);
 
                 ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                 scaleAnimation.setDuration(200);
                 scaleAnimation.setFillAfter(true);
-                documentLayout.startAnimation(scaleAnimation);
+                documentNavbar.startAnimation(scaleAnimation);
 
                 selectedtab = 2;
             }
@@ -106,23 +118,26 @@ public class HomePageActivity extends AppCompatActivity {
 
         profileLayout.setOnClickListener(v -> {
             if (selectedtab != 3) {
-                homeText.setVisibility(View.GONE);
-                documentText.setVisibility(View.GONE);
+//                homeText.setVisibility(View.GONE);
+//                documentText.setVisibility(View.GONE);
 
                 homeImage.setImageResource(R.drawable.ic_homepage);
                 documentImage.setImageResource(R.drawable.ic_document);
 
-                homeLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                documentLayout.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                homeNavbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                documentNavbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
-                profileText.setVisibility(View.VISIBLE);
+                homeText.setTextColor(defaultTextColor);
+                documentText.setTextColor(defaultTextColor);
+
+                profileText.setTextColor(getResources().getColor(R.color.colorSecondary));
                 profileImage.setImageResource(R.drawable.ic_profile_selected);
-                profileLayout.setBackgroundResource(R.drawable.round_back);
+                profileNavbar.setBackgroundResource(R.drawable.navbar_selected);
 
                 ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                 scaleAnimation.setDuration(200);
                 scaleAnimation.setFillAfter(true);
-                profileLayout.startAnimation(scaleAnimation);
+                profileNavbar.startAnimation(scaleAnimation);
 
                 selectedtab = 3;
             }
