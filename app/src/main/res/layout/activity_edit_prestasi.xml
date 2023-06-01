@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".add.AddKepanitiaanActivity">
+    tools:context=".edit.EditPrestasiActivity">
 
     <View
         android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="140dp"
-        android:background="@drawable/picture_add"
+        android:background="@drawable/picture_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
         android:layout_height="48dp"
         android:background="@drawable/tambah_page"
         android:fontFamily="@font/poppins_bold"
-        android:text="Tambah Kepanitiaan"
+        android:text="Edit Prestasi"
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,11 +34,11 @@
         app:layout_constraintVertical_bias="0.163"></androidx.appcompat.widget.AppCompatButton>
 
     <TextView
-        android:id="@+id/namaKepanitiaanTitleAdd"
+        android:id="@+id/namaPrestasiTitleEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Nama Kepanitiaan"
+        android:text="Nama Prestasi"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,7 +49,7 @@
         app:layout_constraintVertical_bias="0.247" />
 
     <EditText
-        android:id="@+id/addNamaKepanitiaan"
+        android:id="@+id/editNamaPrestasi"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:background="@drawable/bginputtask"
@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.304"></EditText>
 
     <TextView
-        android:id="@+id/deskripsiKepanitiaanTitleAdd"
+        android:id="@+id/deskripsiPrestasiTitleEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
@@ -79,7 +79,7 @@
         app:layout_constraintVertical_bias="0.379" />
 
     <EditText
-        android:id="@+id/addDeskripsiKepanitiaan"
+        android:id="@+id/editDeskripsiPrestasi"
         android:layout_width="300dp"
         android:layout_height="128dp"
         android:background="@drawable/bginputtask"
@@ -94,11 +94,11 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <TextView
-        android:id="@+id/jabatanKepanitiaanTitleAdd"
+        android:id="@+id/tingkatPrestasiTitleEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Jabatan"
+        android:text="Tingkat"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,7 +109,7 @@
         app:layout_constraintVertical_bias="0.626" />
 
     <EditText
-        android:id="@+id/addJabatanKepanitiaan"
+        android:id="@+id/editTingkatPrestasi"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:background="@drawable/bginputtask"
@@ -124,11 +124,11 @@
         app:layout_constraintVertical_bias="0.698" />
 
     <TextView
-        android:id="@+id/PeriodeKepanitiaanTitleAdd"
+        android:id="@+id/TahunTitleEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Periode"
+        android:text="Tahun"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -138,22 +138,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.76"></TextView>
 
-    <TextView
-        android:id="@+id/MulaiKepanitiaanTitleAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Mulai"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
-
     <EditText
-        android:id="@+id/addMulaiKepanitiaan"
+        android:id="@+id/editTahun"
         android:layout_width="143dp"
         android:layout_height="48dp"
         android:background="@drawable/bginputtask"
@@ -162,42 +148,13 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.885" />
-
-    <TextView
-        android:id="@+id/selesaiOrganisasiTitleAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Selesai"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.572"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.814" />
-
-    <EditText
-        android:id="@+id/addSelesaiKepanitiaan"
-        android:layout_width="143dp"
-        android:layout_height="48dp"
-        android:background="@drawable/bginputtask"
-        android:hint="Tahun"
-        android:paddingLeft="12dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.768"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.885" />
+        app:layout_constraintVertical_bias="0.833" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnAddKepanitiaan"
+        android:id="@+id/btnSaveChangesPrestasi"
         android:layout_width="270dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -207,11 +164,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
         android:background="@drawable/button_add"
-        android:text="Add"
+        android:text="Save Changes"
         android:textSize="20sp"
         android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/white">
     </androidx.appcompat.widget.AppCompatButton>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

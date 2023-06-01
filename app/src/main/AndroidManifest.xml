@@ -12,6 +12,12 @@
         android:theme="@style/Theme.Profolio"
         tools:targetApi="31">
         <activity
+            android:name=".EditPrestasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditKepanitiaanActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddPrestasiActivity"
             android:exported="false" />
         <activity
