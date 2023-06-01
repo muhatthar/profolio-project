@@ -7,11 +7,12 @@
     android:background="@drawable/on_boarding_2"
     tools:context=".homepage.HomePageActivity">
 
+
     <androidx.fragment.app.FragmentContainerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/navbarLayout"
+        android:id="@+id/fragmentContainerView"
         android:name="com.example.profolio.homepage.HomePageFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         tools:layout="@layout/fragment_home_page" />
 
     <LinearLayout
