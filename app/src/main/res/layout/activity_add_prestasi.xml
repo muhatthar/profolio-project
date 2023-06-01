@@ -18,6 +18,15 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="ExtraText"></View>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/bg_putih_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/appCompatButton"
         android:layout_width="265dp"
@@ -25,6 +34,7 @@
         android:background="@drawable/tambah_page"
         android:fontFamily="@font/poppins_bold"
         android:text="Tambah Prestasi"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +63,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:background="@drawable/bginputtask"
-        android:hint="Add Your Organization Name"
+        android:hint="Add your achievement name"
         android:paddingLeft="12dp"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -113,7 +123,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:background="@drawable/bginputtask"
-        android:hint="Add your position"
+        android:hint="Add your achievement competition class"
         android:paddingLeft="12dp"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -143,7 +153,7 @@
         android:layout_width="143dp"
         android:layout_height="48dp"
         android:background="@drawable/bginputtask"
-        android:hint="Tahun"
+        android:hint="Year"
         android:paddingLeft="12dp"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -157,17 +167,17 @@
         android:id="@+id/btnAddPrestasi"
         android:layout_width="270dp"
         android:layout_height="50dp"
+        android:background="@drawable/button_add"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Add"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
-        android:background="@drawable/button_add"
-        android:text="ADD"
-        android:textSize="20sp"
-        android:fontFamily="@font/poppins_semibold"
-        android:textColor="@color/white">
-    </androidx.appcompat.widget.AppCompatButton>
+        app:layout_constraintVertical_bias="0.976"></androidx.appcompat.widget.AppCompatButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
