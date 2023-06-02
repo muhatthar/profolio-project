@@ -24,8 +24,8 @@
     <style name="Theme.Profolio.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="customTabFont" parent="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="textAllCaps">false</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">11sp</item>
     </style>
 </resources>
