@@ -1,14 +1,19 @@
 package com.example.profolio.homepage;
 
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.profolio.AdapterFragment.SectionPagerAdapter;
 import com.example.profolio.R;
@@ -24,6 +29,8 @@ public class HomePageFragment extends Fragment {
     View view;
     ViewPager viewPager;
     TabLayout tabLayout;
+
+    TextView helloUser, slogan;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,6 +81,9 @@ public class HomePageFragment extends Fragment {
 
         viewPager = view.findViewById(R.id.viewPager);
         tabLayout = view.findViewById(R.id.tabLayout);
+        helloUser = view.findViewById(R.id.helloUser);
+        slogan = view.findViewById(R.id.slogan);
+        //setGradientTextView();
 
         return  view;
     }
@@ -109,5 +119,18 @@ public class HomePageFragment extends Fragment {
         adapter.addFragment(new PrestasiFragment(), "Prestasi");
 
         viewPager.setAdapter(adapter);
+    }
+
+    private void setGradientTextView() {
+        TextPaint helloUserPaint = helloUser.getPaint();
+        TextPaint sloganPaint = slogan.getPaint();
+
+        float width = sloganPaint.measureText("Your Gateway to Professional Success: Profolio!");
+        Shader shader = new LinearGradient(0, 0, width, slogan.getTextSize(),
+                new int[] {
+                        Color.parseColor("#0F0CBE"),
+                        Color.parseColor("#F38873"),
+                }, null, Shader.TileMode.CLAMP);
+        slogan.getPaint().setShader(shader);
     }
 }
