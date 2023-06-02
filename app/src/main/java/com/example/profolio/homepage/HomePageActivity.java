@@ -14,13 +14,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.profolio.R;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomePageActivity extends AppCompatActivity {
     private int selectedtab = 1;
     private int defaultTextColor;
     private LinearLayout linearLayout;
+
+    FloatingActionButton btn_add_organisasi, btn_add_kepanitiaan, btn_add_prestasi;
+    ExtendedFloatingActionButton btn_add;
+    TextView organisasiTv, kepanitiaanTv, prestasiTv;
+    Boolean isAllFABVisible;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +52,15 @@ public class HomePageActivity extends AppCompatActivity {
 
         linearLayout = findViewById(R.id.navbarLayout);
 
+        btn_add = findViewById(R.id.btn_add);
+        btn_add_organisasi = findViewById(R.id.btn_add_organisasi);
+        btn_add_kepanitiaan = findViewById(R.id.btn_add_kepanitiaan);
+        btn_add_prestasi = findViewById(R.id.btn_add_prestasi);
+
+        organisasiTv = findViewById(R.id.organisasiTv);
+        kepanitiaanTv = findViewById(R.id.kepanitiaanTv);
+        prestasiTv = findViewById(R.id.prestasiTv);
+
         defaultTextColor = homeText.getCurrentTextColor();
         linearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -63,6 +80,56 @@ public class HomePageActivity extends AppCompatActivity {
                 });
                 animator.start();
             }
+        });
+
+        btn_add_organisasi.setVisibility(View.GONE);
+        btn_add_kepanitiaan.setVisibility(View.GONE);
+        btn_add_prestasi.setVisibility(View.GONE);
+
+        organisasiTv.setVisibility(View.GONE);
+        kepanitiaanTv.setVisibility(View.GONE);
+        prestasiTv.setVisibility(View.GONE);
+
+        isAllFABVisible = false;
+
+        btn_add.shrink();
+
+        btn_add.setOnClickListener(v -> {
+            if (!isAllFABVisible) {
+                btn_add_organisasi.show();
+                btn_add_kepanitiaan.show();
+                btn_add_prestasi.show();
+
+                organisasiTv.setVisibility(View.VISIBLE);
+                kepanitiaanTv.setVisibility(View.VISIBLE);
+                prestasiTv.setVisibility(View.VISIBLE);
+
+                btn_add.extend();
+                isAllFABVisible = true;
+            } else {
+                btn_add_organisasi.hide();
+                btn_add_kepanitiaan.hide();
+                btn_add_prestasi.hide();
+
+                organisasiTv.setVisibility(View.GONE);
+                kepanitiaanTv.setVisibility(View.GONE);
+                prestasiTv.setVisibility(View.GONE);
+
+                btn_add.shrink();
+                isAllFABVisible = false;
+            }
+        });
+
+        btn_add_organisasi.setOnClickListener(v -> {
+            Toast.makeText(this, "Adding Organisasi", Toast.LENGTH_SHORT).show();
+        });
+
+        btn_add_kepanitiaan.setOnClickListener(v -> {
+            Toast.makeText(this, "Adding Kepanitiaan", Toast.LENGTH_SHORT).show();
+        });
+
+        btn_add_prestasi.setOnClickListener(v -> {
+            Toast.makeText(this, "Adding Prestasi", Toast.LENGTH_SHORT).show();
         });
 
         homeLayout.setOnClickListener(v -> {

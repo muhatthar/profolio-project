@@ -76,7 +76,6 @@ public class HomePageFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout);
 
         return  view;
-
     }
 
     @Override

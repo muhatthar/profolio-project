@@ -15,22 +15,48 @@
         android:background="@drawable/card_bg"
         android:layout_alignParentBottom="true">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="12dp"
+            android:elevation="6dp"
+            android:background="@drawable/card_bg_all_corners"
+            android:orientation="horizontal">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.appbar.AppBarLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                app:tabMode="fixed"
+                app:tabGravity="center"
+                app:tabIndicatorGravity="stretch"
+                app:tabTextAppearance="@style/customTabFont"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/subcaption"
+                app:tabIndicatorAnimationMode="elastic"
+                app:tabIndicatorColor="@null"
+                app:tabIndicator="@drawable/round_back"
+                android:background="@android:color/transparent"/>
+
+<!--            <com.google.android.material.appbar.AppBarLayout-->
+<!--                android:id="@+id/appBarLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/card_bg_all_corners">-->
+
+<!--                -->
+
+<!--            </com.google.android.material.appbar.AppBarLayout>-->
+
+        </LinearLayout>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
     </LinearLayout>
 
 </RelativeLayout>
