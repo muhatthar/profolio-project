@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.view.View;
@@ -95,30 +97,9 @@ public class HomePageActivity extends AppCompatActivity {
         btn_add.shrink();
 
         btn_add.setOnClickListener(v -> {
-            if (!isAllFABVisible) {
-                btn_add_organisasi.show();
-                btn_add_kepanitiaan.show();
-                btn_add_prestasi.show();
-
-                organisasiTv.setVisibility(View.VISIBLE);
-                kepanitiaanTv.setVisibility(View.VISIBLE);
-                prestasiTv.setVisibility(View.VISIBLE);
-
-                btn_add.extend();
-                isAllFABVisible = true;
-            } else {
-                btn_add_organisasi.hide();
-                btn_add_kepanitiaan.hide();
-                btn_add_prestasi.hide();
-
-                organisasiTv.setVisibility(View.GONE);
-                kepanitiaanTv.setVisibility(View.GONE);
-                prestasiTv.setVisibility(View.GONE);
-
-                btn_add.shrink();
-                isAllFABVisible = false;
-            }
+            animateFAB(!isAllFABVisible);
         });
+
 
         btn_add_organisasi.setOnClickListener(v -> {
             Toast.makeText(this, "Adding Organisasi", Toast.LENGTH_SHORT).show();
@@ -215,4 +196,74 @@ public class HomePageActivity extends AppCompatActivity {
 
 
     }
+
+    private void animateFAB(boolean show) {
+        if (show) {
+            if (isAllFABVisible) {
+                // Animation is already in progress, no need to start a new animation
+                return;
+            }
+
+            // Reset the FABs and labels
+            btn_add_organisasi.setScaleX(0f);
+            btn_add_organisasi.setScaleY(0f);
+            btn_add_kepanitiaan.setScaleX(0f);
+            btn_add_kepanitiaan.setScaleY(0f);
+            btn_add_prestasi.setScaleX(0f);
+            btn_add_prestasi.setScaleY(0f);
+
+            // Show the FABs and labels
+            btn_add_organisasi.setVisibility(View.VISIBLE);
+            btn_add_kepanitiaan.setVisibility(View.VISIBLE);
+            btn_add_prestasi.setVisibility(View.VISIBLE);
+
+            organisasiTv.setVisibility(View.VISIBLE);
+            kepanitiaanTv.setVisibility(View.VISIBLE);
+            prestasiTv.setVisibility(View.VISIBLE);
+
+            btn_add.extend();
+            isAllFABVisible = true;
+
+            // Animation for the first FAB
+            btn_add_organisasi.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setDuration(200)
+                    .start();
+
+            // Delay and animation for the second FAB
+            btn_add_kepanitiaan.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setStartDelay(100)
+                    .setDuration(200)
+                    .start();
+
+            // Delay and animation for the third FAB
+            btn_add_prestasi.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setStartDelay(200)
+                    .setDuration(200)
+                    .start();
+        } else {
+            if (!isAllFABVisible) {
+                // Animation is not in progress, no need to cancel anything
+                return;
+            }
+
+            // Hide the FABs and labels
+            btn_add_organisasi.setVisibility(View.GONE);
+            btn_add_kepanitiaan.setVisibility(View.GONE);
+            btn_add_prestasi.setVisibility(View.GONE);
+
+            organisasiTv.setVisibility(View.GONE);
+            kepanitiaanTv.setVisibility(View.GONE);
+            prestasiTv.setVisibility(View.GONE);
+
+            btn_add.shrink();
+            isAllFABVisible = false;
+        }
+    }
+
 }
