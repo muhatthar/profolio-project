@@ -1,12 +1,14 @@
 package com.example.profolio.homepage;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -19,6 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.profolio.R;
+import com.example.profolio.add.AddKepanitiaanActivity;
+import com.example.profolio.add.AddOrganisasiActivity;
+import com.example.profolio.add.AddPrestasiActivity;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -103,15 +108,23 @@ public class HomePageActivity extends AppCompatActivity {
 
         btn_add_organisasi.setOnClickListener(v -> {
             Toast.makeText(this, "Adding Organisasi", Toast.LENGTH_SHORT).show();
+            Intent addOrganisasi = new Intent(this, AddOrganisasiActivity.class);
+            startActivity(addOrganisasi);
         });
 
         btn_add_kepanitiaan.setOnClickListener(v -> {
             Toast.makeText(this, "Adding Kepanitiaan", Toast.LENGTH_SHORT).show();
+            Intent addkepanitiaan = new Intent(this, AddKepanitiaanActivity.class);
+            startActivity(addkepanitiaan);
         });
 
         btn_add_prestasi.setOnClickListener(v -> {
             Toast.makeText(this, "Adding Prestasi", Toast.LENGTH_SHORT).show();
+            Intent addPrestasi = new Intent(this, AddPrestasiActivity.class);
+            startActivity(addPrestasi);
         });
+
+        replaceFragment(new OrganisasiFragment());
 
         homeLayout.setOnClickListener(v -> {
             if (selectedtab != 1) {
@@ -196,6 +209,14 @@ public class HomePageActivity extends AppCompatActivity {
 
 
     }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.viewPager, OrganisasiFragment.class, null);
+        fragmentTransaction.commit();
+    }
+
     private void animateFAB(boolean show) {
         if (show) {
             if (isAllFABVisible) {

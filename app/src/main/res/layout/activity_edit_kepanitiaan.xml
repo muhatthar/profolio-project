@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edit.EditKepanitiaanActivity">
+    tools:context=".add.AddOrganisasiActivity"
+    android:background="@color/white">
 
     <View
         android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="140dp"
-        android:background="@drawable/picture_edit"
+        android:background="@drawable/picture_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,211 +19,153 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="ExtraText"></View>
 
-
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="118dp"
         android:background="@drawable/bg_putih_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton"
-        android:layout_width="265dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="120dp"
-        android:background="@drawable/tambah_page"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Edit Kepanitiaan"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="15sp"
+        android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"></androidx.appcompat.widget.AppCompatButton>
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/namaKepanitiaanTitleEdit"
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/tambah_page"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingHorizontal="55dp"
+            android:paddingVertical="7dp"
+            android:text="Edit Kepanitaan"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Nama Kepanitiaan"
-        android:textColor="@color/black"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.247" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0">
 
-    <EditText
-        android:id="@+id/editNamaKepanitiaan"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:background="@drawable/bginputtask"
-        android:hint="Edit your committee Name"
-        android:paddingLeft="12dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.351"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.304"></EditText>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/deskripsiKepanitiaanTitleEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Deskripsi"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.379" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Nama Kepanitiaan"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
-    <EditText
-        android:id="@+id/editDeskripsiKepanitiaan"
-        android:layout_width="300dp"
-        android:layout_height="128dp"
-        android:background="@drawable/bginputtask"
-        android:hint="Edit your description"
-        android:paddingLeft="12sp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/bginputtask"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Name of your organization"
+                android:inputType="text"
+                android:paddingStart="10dp"
+                android:textColor="@color/subcaption"
+                android:textColorHint="@color/subcaption"
+                android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/jabatanKepanitiaanTitleEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Jabatan"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.626" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Deskripsi"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
-    <EditText
-        android:id="@+id/editJabatanKepanitiaan"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:background="@drawable/bginputtask"
-        android:hint="Edit your position"
-        android:paddingLeft="12dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/bginputtask"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="top"
+                android:inputType="text"
+                android:hint="Description about your organization"
+                android:paddingStart="10dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/subcaption"
+                android:textColorHint="@color/subcaption"
+                android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/PeriodeKepanitiaanTitleEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Periode"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.76"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Jabatan"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/MulaiKepanitiaanTitleEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Mulai"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/bginputtask"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Your position in organization"
+                android:paddingStart="10dp"
+                android:inputType="text"
+                android:textColor="@color/subcaption"
+                android:textColorHint="@color/subcaption"
+                android:textSize="12sp" />
 
-    <EditText
-        android:id="@+id/editMulaiKepanitiaan"
-        android:layout_width="143dp"
-        android:layout_height="48dp"
-        android:background="@drawable/bginputtask"
-        android:hint="Year Start"
-        android:paddingLeft="12dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.885" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Tahun"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/selesaiKepanitiaanTitleEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Selesai"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.572"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.814" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="155dp"
+                android:background="@drawable/bginputtask"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Tahun"
+                android:paddingStart="10dp"
+                android:inputType="number"
+                android:maxLength="4"
+                android:textColor="@color/subcaption"
+                android:textColorHint="@color/subcaption"
+                android:textSize="12sp" />
 
-    <EditText
-        android:id="@+id/editSelesaiKepanitiaan"
-        android:layout_width="143dp"
-        android:layout_height="48dp"
-        android:background="@drawable/bginputtask"
-        android:hint="Year End"
-        android:paddingLeft="12dp"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.768"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.885" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_back"
+                android:fontFamily="@font/poppins_semibold"
+                android:hint="Add"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSaveChangesKepanitiaan"
-        android:layout_width="270dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.411"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
-        android:background="@drawable/button_add"
-        android:text="Save Changes"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:fontFamily="@font/poppins_semibold"
-        android:textColor="@color/white">
-    </androidx.appcompat.widget.AppCompatButton>
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

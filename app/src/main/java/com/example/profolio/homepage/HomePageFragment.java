@@ -1,5 +1,6 @@
 package com.example.profolio.homepage;
 
+import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
@@ -7,17 +8,25 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.profolio.AdapterFragment.SectionPagerAdapter;
+import com.example.profolio.ModelFragment.OrganisasiModel;
 import com.example.profolio.R;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,8 +38,8 @@ public class HomePageFragment extends Fragment {
     View view;
     ViewPager viewPager;
     TabLayout tabLayout;
-
     TextView helloUser, slogan;
+    LinearLayout containerRecyclerView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,11 +88,33 @@ public class HomePageFragment extends Fragment {
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.fragment_home_page, container, false);
 
+        containerRecyclerView = view.findViewById(R.id.containerRecyclerView);
+
         viewPager = view.findViewById(R.id.viewPager);
         tabLayout = view.findViewById(R.id.tabLayout);
         helloUser = view.findViewById(R.id.helloUser);
         slogan = view.findViewById(R.id.slogan);
         //setGradientTextView();
+
+        containerRecyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                containerRecyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                float startPosition = containerRecyclerView.getY() + containerRecyclerView.getHeight();
+                float endPosition = containerRecyclerView.getY();
+                ValueAnimator animator = ValueAnimator.ofFloat(startPosition, endPosition);
+                animator.setDuration(1000);
+                animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        float animatedValue = (float) animation.getAnimatedValue();
+                        containerRecyclerView.setY(animatedValue);
+                    }
+                });
+                animator.start();
+            }
+        });
 
         return  view;
     }
@@ -133,4 +164,6 @@ public class HomePageFragment extends Fragment {
                 }, null, Shader.TileMode.CLAMP);
         slogan.getPaint().setShader(shader);
     }
+
+
 }

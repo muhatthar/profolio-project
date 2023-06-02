@@ -2,64 +2,86 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CardViewPopUpEditSatu"
-        android:layout_width="356dp"
-        android:layout_height="214dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="348dp"
+        app:cardCornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="40dp"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Sure you want to changes?"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:layout_marginLeft="44dp"
-            android:layout_marginTop="44dp">
-        </TextView>
+            android:layout_marginVertical="20dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="10sp"
-            android:text="Are you sure you want to changes this?"
-            android:textColor="#787575"
-            android:layout_marginTop="72dp"
-            android:layout_marginLeft="44dp"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Sure you want to changes?"
+                android:textColor="@color/black"
+                android:textSize="14sp"></TextView>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_popup1_edit"
-            android:layout_width="135dp"
-            android:layout_height="48dp"
-            android:text="Cancel"
-            android:textColor="@color/black"
-            android:layout_marginLeft="44dp"
-            android:layout_marginTop="130dp">
-        </androidx.appcompat.widget.AppCompatButton>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Are you sure you want to changes this?"
+                android:textColor="#787575"
+                android:textSize="10sp">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_popup2_edit"
-            android:layout_width="135dp"
-            android:layout_height="48dp"
-            android:background="@drawable/btn_pop_up_2"
-            android:text="Confirm"
-            android:textSize="14sp"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/white"
-            android:layout_marginTop="130dp"
-            android:layout_marginLeft="180dp">
+            </TextView>
 
-        </androidx.appcompat.widget.AppCompatButton>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:paddingVertical="4dp"
+                android:layout_marginBottom ="26dp"
+                android:layout_gravity="center">
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_popup2_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="@drawable/btn_pop_up_2"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Yes, Confirm"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp">
+
+                </androidx.appcompat.widget.AppCompatButton>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_popup1_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="12dp"
+                    android:paddingHorizontal="32dp"
+                    android:text="Cancel"
+                    android:textColor="@color/black">
+                </androidx.appcompat.widget.AppCompatButton>
+            </LinearLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

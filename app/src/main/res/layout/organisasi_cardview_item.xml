@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -11,23 +11,27 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="22dp"
         android:layout_marginTop="12dp"
-        android:layout_marginRight="22dp">
+        android:layout_marginRight="22dp"
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginBottom="10dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@color/colorTertiary"
+        app:cardCornerRadius="13dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
             android:background="@drawable/cardview_rv_bg"
-            android:paddingStart="28dp">
+            android:paddingStart="14dp"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginEnd="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_weight="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -52,6 +56,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_medium"
                         android:text="Ketua"
+                        android:textColor="@color/subcaption"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -75,6 +80,7 @@
                     android:fontFamily="@font/poppins_medium"
                     android:text="Golf Brawijaya adalah UKM yang ada di Universitas Brawijaya"
                     android:textSize="12sp"
+                    android:textColor="@color/subcaption"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -83,34 +89,32 @@
 
             </LinearLayout>
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btn_delete_organisasi"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="4dp"
-                android:layout_marginStart="3.5dp"
-                android:foreground="@drawable/ic_button_delete_organisasi"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/linearLayout"
-                app:layout_constraintTop_toTopOf="parent"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="7dp"
+                android:orientation="vertical">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btn_edit_organisasi"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="8dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="3.5dp"
-                android:foreground="@drawable/ic_button_edit_organisasi"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/linearLayout"
-                app:layout_constraintTop_toBottomOf="@+id/btn_delete_organisasi" />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btn_delete_organisasi"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginTop="12dp"
+                    android:foreground="@drawable/ic_button_delete_organisasi"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btn_edit_organisasi"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_gravity="center"
+                    android:foreground="@drawable/ic_button_edit_organisasi" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
