@@ -196,7 +196,6 @@ public class HomePageActivity extends AppCompatActivity {
 
 
     }
-
     private void animateFAB(boolean show) {
         if (show) {
             if (isAllFABVisible) {
