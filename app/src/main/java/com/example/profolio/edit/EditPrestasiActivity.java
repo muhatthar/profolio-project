@@ -8,6 +8,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,6 +72,9 @@ public class EditPrestasiActivity extends AppCompatActivity {
             } else  {
                 Dialog popUp = new Dialog(EditPrestasiActivity.this);
                 popUp.setContentView(R.layout.popup1_edit);
+                Window window = popUp.getWindow();
+                WindowManager.LayoutParams layoutParams = window.getAttributes();
+                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
 
                 AppCompatButton confirm = popUp.findViewById(R.id.btnEditConfirm);
                 AppCompatButton cancel = popUp.findViewById(R.id.btnEditCancel);

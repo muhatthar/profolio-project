@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,6 +72,9 @@ public class AdapterKepanitiaan extends RecyclerView.Adapter<AdapterKepanitiaan.
         holder.btn_delete_kepanitiaan.setOnClickListener(v -> {
             Dialog popUp = new Dialog(context);
             popUp.setContentView(R.layout.popup_1_delete);
+            Window window = popUp.getWindow();
+            WindowManager.LayoutParams layoutParams = window.getAttributes();
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
 
             AppCompatButton cancel = popUp.findViewById(R.id.btnDeleteCancel);
             AppCompatButton confirm = popUp.findViewById(R.id.btnDeleteConfirm);
