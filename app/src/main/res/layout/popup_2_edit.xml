@@ -57,16 +57,12 @@
             android:layout_marginLeft="100dp"
             android:layout_marginTop="225dp"
             android:layout_marginBottom="100dp"
-            android:background="@android:color/transparent"
-            android:fontFamily="@font/poppins_medium"
-            android:text="View Document"></androidx.appcompat.widget.AppCompatButton>
-
-
-
-
-
-
-
+            android:background="@drawable/btn_round_back_gradient"
+            android:fontFamily="@font/poppins_semibold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:text="View Document">
+        </androidx.appcompat.widget.AppCompatButton>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

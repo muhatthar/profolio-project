@@ -124,7 +124,7 @@ public class HomePageActivity extends AppCompatActivity {
             startActivity(addPrestasi);
         });
 
-        replaceFragment(new OrganisasiFragment());
+//        replaceFragment(new OrganisasiFragment());
 
         homeLayout.setOnClickListener(v -> {
             if (selectedtab != 1) {
@@ -210,12 +210,12 @@ public class HomePageActivity extends AppCompatActivity {
 
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.viewPager, OrganisasiFragment.class, null);
-        fragmentTransaction.commit();
-    }
+//    private void replaceFragment(Fragment fragment) {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.viewPager, OrganisasiFragment.class, null);
+//        fragmentTransaction.commit();
+//    }
 
     private void animateFAB(boolean show) {
         if (show) {

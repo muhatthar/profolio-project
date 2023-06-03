@@ -47,12 +47,12 @@ public class AddOrganisasiActivity extends AppCompatActivity {
                 edtNamaOrganisasi.setError("Entry Organisasi Name");
             } else if (getDeskripsiOrganisasi.isEmpty()) {
                 edtDeskripsiOrganisasi.setError("Entry Organisasi Description");
-            } else if (getDeskripsiOrganisasi.isEmpty()) {
-                edtJabatanOrganisasi.setError("Entry Organisasi Description");
-            } else if (getDeskripsiOrganisasi.isEmpty()) {
-                edtTahunMulaiOrganisasi.setError("Entry Organisasi Description");
-            } else if (getDeskripsiOrganisasi.isEmpty()) {
-                edtTahunSelesaiOrganisasi.setError("Entry Organisasi Description");
+            } else if (getJabatanOrganisasi.isEmpty()) {
+                edtJabatanOrganisasi.setError("Entry Jabatan Status");
+            } else if (getTahunMulaiOrganisasi.isEmpty()) {
+                edtTahunMulaiOrganisasi.setError("Entry Tahun Mulai");
+            } else if (getTahunSelesaiOrganisasi.isEmpty()) {
+                edtTahunSelesaiOrganisasi.setError("Entry Tahun Selesai");
             } else {
                 database.child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
                         getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {

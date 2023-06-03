@@ -33,7 +33,7 @@
         </TextView>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_popup1_delete"
+            android:id="@+id/btnDeleteCancel"
             android:layout_width="135dp"
             android:layout_height="48dp"
             android:text="Cancel"
@@ -43,7 +43,7 @@
         </androidx.appcompat.widget.AppCompatButton>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_popup2_delete"
+            android:id="@+id/btnDeleteConfirm"
             android:layout_width="135dp"
             android:layout_height="48dp"
             android:background="@drawable/btn_pop_up_2"
