@@ -2,13 +2,27 @@ package com.example.profolio.homepage;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.profolio.AdapterFragment.AdapterKepanitiaan;
+import com.example.profolio.ModelFragment.KepanitiaanModel;
 import com.example.profolio.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +35,10 @@ public class KepanitiaanFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    ArrayList<KepanitiaanModel> kepanitiaanItems;
+    RecyclerView rvKepanitiaan;
+    AdapterKepanitiaan adapterKepanitiaan;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -61,6 +79,36 @@ public class KepanitiaanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_kepanitiaan, container, false);
+        View kepanitiaanView = inflater.inflate(R.layout.fragment_kepanitiaan, container, false);
+
+        rvKepanitiaan = kepanitiaanView.findViewById(R.id.rvKepanitiaan);
+        RecyclerView.LayoutManager mLayout = new LinearLayoutManager(getContext());
+        rvKepanitiaan.setLayoutManager(mLayout);
+        rvKepanitiaan.setHasFixedSize(true);
+        rvKepanitiaan.setItemAnimator(new DefaultItemAnimator());
+
+        showData();
+        return kepanitiaanView;
+    }
+    private void showData() {
+        database.child("Kepanitiaan").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                kepanitiaanItems = new ArrayList<>();
+                for (DataSnapshot item : snapshot.getChildren()) {
+                    KepanitiaanModel kepanitiaan = item.getValue(KepanitiaanModel.class);
+                    kepanitiaan.setKey(item.getKey());
+                    kepanitiaanItems.add(kepanitiaan);
+                }
+                Collections.reverse(kepanitiaanItems);
+                adapterKepanitiaan = new AdapterKepanitiaan(kepanitiaanItems, getContext());
+                rvKepanitiaan.setAdapter(adapterKepanitiaan);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
