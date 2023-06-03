@@ -1,5 +1,6 @@
 package com.example.profolio.AdapterFragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -7,6 +8,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
@@ -47,7 +50,7 @@ public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.Or
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterOrganisasi.OrganisasiViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterOrganisasi.OrganisasiViewHolder holder, @SuppressLint("RecyclerView") int position) {
         //Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         OrganisasiModel organisasiData = organisasiItems.get(position);
         holder.tvTitleOrganisasi.setText(organisasiData.getNamaOrganisasi());
@@ -77,6 +80,9 @@ public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.Or
         holder.btn_delete_organisasi.setOnClickListener(v -> {
             Dialog popUp = new Dialog(context);
             popUp.setContentView(R.layout.popup_1_delete);
+            Window window = popUp.getWindow();
+            WindowManager.LayoutParams layoutParams = window.getAttributes();
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
 
             AppCompatButton cancel = popUp.findViewById(R.id.btnDeleteCancel);
             AppCompatButton confirm = popUp.findViewById(R.id.btnDeleteConfirm);
