@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,16 +33,14 @@ import java.util.ArrayList;
  */
 public class OrganisasiFragment extends Fragment {
 
-    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-    ArrayList<OrganisasiModel> organisasiItems;
-    RecyclerView rvOrganisasi;
-    AdapterOrganisasi adapterOrganisasi;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    ArrayList<OrganisasiModel> organisasiItems;
+    RecyclerView rvOrganisasi;
+    AdapterOrganisasi adapterOrganisasi;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -78,10 +77,9 @@ public class OrganisasiFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View organisasiView =  inflater.inflate(R.layout.fragment_organisasi, container, false);
+        View organisasiView = inflater.inflate(R.layout.fragment_organisasi, container, false);
 
         rvOrganisasi = organisasiView.findViewById(R.id.rvOrganisasi);
         RecyclerView.LayoutManager mLayout = new LinearLayoutManager(getContext());
@@ -103,6 +101,7 @@ public class OrganisasiFragment extends Fragment {
                     organisasi.setKey(item.getKey());
                     organisasiItems.add(organisasi);
                 }
+                Collections.reverse(organisasiItems);
                 adapterOrganisasi = new AdapterOrganisasi(organisasiItems, getContext());
                 rvOrganisasi.setAdapter(adapterOrganisasi);
             }

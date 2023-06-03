@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import android.text.TextPaint;
@@ -150,19 +152,4 @@ public class HomePageFragment extends Fragment {
 
         viewPager.setAdapter(adapter);
     }
-
-    private void setGradientTextView() {
-        TextPaint helloUserPaint = helloUser.getPaint();
-        TextPaint sloganPaint = slogan.getPaint();
-
-        float width = sloganPaint.measureText("Your Gateway to Professional Success: Profolio!");
-        Shader shader = new LinearGradient(0, 0, width, slogan.getTextSize(),
-                new int[] {
-                        Color.parseColor("#0F0CBE"),
-                        Color.parseColor("#F38873"),
-                }, null, Shader.TileMode.CLAMP);
-        slogan.getPaint().setShader(shader);
-    }
-
-
 }
