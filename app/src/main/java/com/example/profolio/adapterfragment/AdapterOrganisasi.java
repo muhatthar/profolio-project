@@ -25,6 +25,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.OrganisasiViewHolder> {
@@ -48,6 +50,7 @@ public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.Or
     public void onBindViewHolder(@NonNull AdapterOrganisasi.OrganisasiViewHolder holder, @SuppressLint("RecyclerView") int position) {
         //Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         OrganisasiModel organisasiData = organisasiItems.get(position);
+
         holder.tvTitleOrganisasi.setText(organisasiData.getNamaOrganisasi());
         holder.tvJabatanOrganisas.setText(organisasiData.getJabatanOrganisasi());
         holder.tvDeskripsiOrganisasi.setText(organisasiData.getDeskripsiOrganisasi());
@@ -130,7 +133,6 @@ public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.Or
             tvJabatanOrganisas = itemView.findViewById(R.id.tvJabatanOrganisas);
             tvPeriodeOrganisasi = itemView.findViewById(R.id.tvPeriodeOrganisasi);
             tvDeskripsiOrganisasi = itemView.findViewById(R.id.tvDeskripsiOrganisasi);
-
             btn_delete_organisasi = itemView.findViewById(R.id.btn_delete_organisasi);
             btn_edit_organisasi = itemView.findViewById(R.id.btn_edit_organisasi);
         }
