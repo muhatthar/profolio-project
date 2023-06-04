@@ -9,13 +9,12 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.profolio.ModelFragment.OrganisasiModel;
+import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.R;
 import com.example.profolio.homepage.HomePageActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AddOrganisasiActivity extends AppCompatActivity {

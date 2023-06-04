@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.profolio.ModelFragment.PrestasiModel;
+import com.example.profolio.modelfragment.PrestasiModel;
 import com.example.profolio.R;
 import com.example.profolio.homepage.HomePageActivity;
 import com.google.android.gms.tasks.OnFailureListener;

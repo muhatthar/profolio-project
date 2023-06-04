@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.profolio.AdapterFragment.AdapterPrestasi;
-import com.example.profolio.ModelFragment.PrestasiModel;
+import com.example.profolio.adapterfragment.AdapterPrestasi;
+import com.example.profolio.modelfragment.PrestasiModel;
 import com.example.profolio.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

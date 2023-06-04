@@ -1,4 +1,4 @@
-package com.example.profolio.AdapterFragment;
+package com.example.profolio.adapterfragment;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -15,9 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.profolio.ModelFragment.KepanitiaanModel;
+import com.example.profolio.modelfragment.PrestasiModel;
 import com.example.profolio.R;
-import com.example.profolio.edit.EditKepanitiaanActivity;
+import com.example.profolio.edit.EditPrestasiActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,30 +26,30 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class AdapterKepanitiaan extends RecyclerView.Adapter<AdapterKepanitiaan.KepanitiaanViewHolder> {
-    private List<KepanitiaanModel> kepanitiaanItems;
+public class AdapterPrestasi extends RecyclerView.Adapter<AdapterPrestasi.PrestasiViewHolder> {
+    private List<PrestasiModel> prestasiItems;
     private Context context;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
-    public AdapterKepanitiaan(List<KepanitiaanModel> kepanitiaanItems, Context context) {
-        this.kepanitiaanItems = kepanitiaanItems;
+    public AdapterPrestasi(List<PrestasiModel> prestasiItems, Context context) {
+        this.prestasiItems = prestasiItems;
         this.context = context;
     }
     @NonNull
     @Override
-    public AdapterKepanitiaan.KepanitiaanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterPrestasi.PrestasiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View kepanitiaanView = inflater.inflate(R.layout.kepanitiaan_cardview_item, parent, false);
-        return new KepanitiaanViewHolder(kepanitiaanView);
+        View prestasiView = inflater.inflate(R.layout.prestasi_cardview_item, parent, false);
+        return new PrestasiViewHolder(prestasiView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterKepanitiaan.KepanitiaanViewHolder holder, int position) {
-        KepanitiaanModel kepanitiaanData = kepanitiaanItems.get(position);
-        holder.tvTitleKepanitiaan.setText(kepanitiaanData.getNamaKepanitiaan());
-        holder.tvJabatanKepanitiaan.setText(kepanitiaanData.getJabatanKepanitiaan());
-        holder.tvDeskripsiKepanitiaan.setText(kepanitiaanData.getDeskripsiKepanitiaan());
-        holder.tvPeriodeKepanitiaan.setText(kepanitiaanData.getTahunKepanitiaan());
+    public void onBindViewHolder(@NonNull AdapterPrestasi.PrestasiViewHolder holder, int position) {
+        PrestasiModel prestasiData = prestasiItems.get(position);
+        holder.tvTitlePrestasi.setText(prestasiData.getNamaPrestasi());
+        holder.tvJabatanPrestasi.setText(prestasiData.getJabatanPrestasi());
+        holder.tvDeskripsiPrestasi.setText(prestasiData.getDeskripsiPrestasi());
+        holder.tvPeriodePrestasi.setText(prestasiData.getTahunPrestasi());
 
         holder.itemView.setAlpha(0f);
         holder.itemView.animate()
@@ -58,18 +58,18 @@ public class AdapterKepanitiaan extends RecyclerView.Adapter<AdapterKepanitiaan.
                 .setStartDelay(300 * position)  // Add a delay to stagger the animations
                 .start();
 
-        holder.btn_edit_kepanitiaan.setOnClickListener(v -> {
-            Intent editForm = new Intent(context, EditKepanitiaanActivity.class);
-            editForm.putExtra("key", kepanitiaanData.getKey());
-            editForm.putExtra("nama", kepanitiaanData.getNamaKepanitiaan());
-            editForm.putExtra("deskripsi", kepanitiaanData.getDeskripsiKepanitiaan());
-            editForm.putExtra("jabatan", kepanitiaanData.getJabatanKepanitiaan());
-            editForm.putExtra("tahun", kepanitiaanData.getTahunKepanitiaan());
+        holder.btn_edit_prestasi.setOnClickListener(v -> {
+            Intent editForm = new Intent(context, EditPrestasiActivity.class);
+            editForm.putExtra("key", prestasiData.getKey());
+            editForm.putExtra("nama", prestasiData.getNamaPrestasi());
+            editForm.putExtra("deskripsi", prestasiData.getDeskripsiPrestasi());
+            editForm.putExtra("jabatan", prestasiData.getJabatanPrestasi());
+            editForm.putExtra("tahun", prestasiData.getTahunPrestasi());
 
             context.startActivity(editForm);
         });
 
-        holder.btn_delete_kepanitiaan.setOnClickListener(v -> {
+        holder.btn_delete_prestasi.setOnClickListener(v -> {
             Dialog popUp = new Dialog(context);
             popUp.setContentView(R.layout.popup_1_delete);
             Window window = popUp.getWindow();
@@ -89,11 +89,11 @@ public class AdapterKepanitiaan extends RecyclerView.Adapter<AdapterKepanitiaan.
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    database.child("Kepanitiaan").child(kepanitiaanData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    database.child("Prestasi").child(prestasiData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(context, "Delete data succesfully", Toast.LENGTH_SHORT).show();
-                            kepanitiaanItems.remove(position);
+                            prestasiItems.remove(position);
                             notifyItemRemoved(position);
                             notifyItemRangeChanged(position, getItemCount());
                             //notifyDataSetChanged();
@@ -111,26 +111,23 @@ public class AdapterKepanitiaan extends RecyclerView.Adapter<AdapterKepanitiaan.
         });
     }
 
-
-
     @Override
     public int getItemCount() {
-        return kepanitiaanItems.size();
+        return prestasiItems.size();
     }
 
-    public class KepanitiaanViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitleKepanitiaan, tvJabatanKepanitiaan, tvPeriodeKepanitiaan, tvDeskripsiKepanitiaan;
-        FloatingActionButton btn_delete_kepanitiaan, btn_edit_kepanitiaan;
-        public KepanitiaanViewHolder(@NonNull View itemView) {
+    public class PrestasiViewHolder extends RecyclerView.ViewHolder {
+        TextView tvTitlePrestasi, tvJabatanPrestasi, tvPeriodePrestasi, tvDeskripsiPrestasi;
+        FloatingActionButton btn_delete_prestasi, btn_edit_prestasi;
+        public PrestasiViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvTitlePrestasi = itemView.findViewById(R.id.tvTitlePrestasi);
+            tvJabatanPrestasi = itemView.findViewById(R.id.tvJabatanPrestasi);
+            tvPeriodePrestasi = itemView.findViewById(R.id.tvPeriodePrestasi);
+            tvDeskripsiPrestasi = itemView.findViewById(R.id.tvDeskripsiPrestasi);
 
-            tvTitleKepanitiaan = itemView.findViewById(R.id.tvTitleKepanitiaan);
-            tvJabatanKepanitiaan = itemView.findViewById(R.id.tvJabatanKepanitiaan);
-            tvPeriodeKepanitiaan = itemView.findViewById(R.id.tvPeriodeKepanitiaan);
-            tvDeskripsiKepanitiaan = itemView.findViewById(R.id.tvDeskripsiKepanitiaan);
-
-            btn_delete_kepanitiaan = itemView.findViewById(R.id.btn_delete_kepanitiaan);
-            btn_edit_kepanitiaan = itemView.findViewById(R.id.btn_edit_kepanitiaan);
+            btn_delete_prestasi = itemView.findViewById(R.id.btn_delete_prestasi);
+            btn_edit_prestasi = itemView.findViewById(R.id.btn_edit_prestasi);
         }
     }
 }

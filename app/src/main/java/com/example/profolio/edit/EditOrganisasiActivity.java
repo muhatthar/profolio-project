@@ -10,17 +10,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.profolio.AdapterFragment.AdapterOrganisasi;
-import com.example.profolio.ModelFragment.OrganisasiModel;
+import com.example.profolio.adapterfragment.AdapterOrganisasi;
+import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.R;
 import com.example.profolio.homepage.HomePageActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

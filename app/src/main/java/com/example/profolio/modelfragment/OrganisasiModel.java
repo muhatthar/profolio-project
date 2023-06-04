@@ -1,4 +1,4 @@
-package com.example.profolio.ModelFragment;
+package com.example.profolio.modelfragment;
 
 public class OrganisasiModel {
 

@@ -13,10 +13,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.profolio.AdapterFragment.AdapterKepanitiaan;
-import com.example.profolio.AdapterFragment.AdapterOrganisasi;
-import com.example.profolio.ModelFragment.KepanitiaanModel;
-import com.example.profolio.ModelFragment.OrganisasiModel;
+import com.example.profolio.adapterfragment.AdapterKepanitiaan;
+import com.example.profolio.modelfragment.KepanitiaanModel;
 import com.example.profolio.R;
 import com.example.profolio.homepage.HomePageActivity;
 import com.google.android.gms.tasks.OnFailureListener;

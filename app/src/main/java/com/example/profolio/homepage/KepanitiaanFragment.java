@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.profolio.AdapterFragment.AdapterKepanitiaan;
-import com.example.profolio.ModelFragment.KepanitiaanModel;
+import com.example.profolio.adapterfragment.AdapterKepanitiaan;
+import com.example.profolio.modelfragment.KepanitiaanModel;
 import com.example.profolio.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

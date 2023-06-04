@@ -13,8 +13,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.profolio.AdapterFragment.AdapterPrestasi;
-import com.example.profolio.ModelFragment.PrestasiModel;
+import com.example.profolio.adapterfragment.AdapterPrestasi;
+import com.example.profolio.modelfragment.PrestasiModel;
 import com.example.profolio.R;
 import com.example.profolio.homepage.HomePageActivity;
 import com.google.android.gms.tasks.OnFailureListener;

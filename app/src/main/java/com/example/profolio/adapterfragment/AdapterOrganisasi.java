@@ -1,7 +1,6 @@
-package com.example.profolio.AdapterFragment;
+package com.example.profolio.adapterfragment;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,18 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.profolio.ModelFragment.OrganisasiModel;
+import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.R;
 import com.example.profolio.edit.EditOrganisasiActivity;
 import com.google.android.gms.tasks.OnFailureListener;
