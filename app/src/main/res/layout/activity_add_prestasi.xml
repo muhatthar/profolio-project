@@ -166,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_back"
                 android:fontFamily="@font/poppins_semibold"
-                android:hint="Save Changes"
+                android:hint="Add"
                 android:textColorHint="@color/white"
                 android:textSize="20sp" />
 
