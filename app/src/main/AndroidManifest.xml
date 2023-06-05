@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Profolio"
         tools:targetApi="31">
         <activity
+            android:name=".edit.EditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".edit.EditOrganisasiActivity"
             android:exported="false" />
         <activity
