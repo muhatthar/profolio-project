@@ -72,6 +72,7 @@ public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.Or
             editForm.putExtra("jabatan", organisasiData.getJabatanOrganisasi());
             editForm.putExtra("tahunMulai", organisasiData.getTahunMulaiOrganisasi());
             editForm.putExtra("tahunSelesai", organisasiData.getTahunSelesaiOrganisasi());
+            editForm.putExtra("sertifikat", organisasiData.getSertifOrganisasi());
             context.startActivity(editForm);
         });
 
