@@ -46,7 +46,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="0.0">
@@ -149,7 +149,7 @@
                 android:id="@+id/edtTahunPrestasi2"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
-                android:layout_marginBottom="155dp"
+                android:layout_marginBottom="13dp"
                 android:background="@drawable/bginputtask"
                 android:fontFamily="@font/poppins_regular"
                 android:hint="Tahun"
@@ -159,6 +159,32 @@
                 android:textColor="@color/subcaption"
                 android:textColorHint="@color/subcaption"
                 android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Upload Sertifikat"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_Prestasi2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_UploadSertif2"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@drawable/bginputtask"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Upload Image"
+                android:textColorHint="@color/subcaption"
+                android:textSize="12sp"
+                android:layout_marginBottom="30dp"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnEditPrestasi"

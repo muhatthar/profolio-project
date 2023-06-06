@@ -65,6 +65,7 @@ public class AdapterPrestasi extends RecyclerView.Adapter<AdapterPrestasi.Presta
             editForm.putExtra("deskripsi", prestasiData.getDeskripsiPrestasi());
             editForm.putExtra("jabatan", prestasiData.getJabatanPrestasi());
             editForm.putExtra("tahun", prestasiData.getTahunPrestasi());
+            editForm.putExtra("sertifikat", prestasiData.getSertifikatPrestasi());
 
             context.startActivity(editForm);
         });
