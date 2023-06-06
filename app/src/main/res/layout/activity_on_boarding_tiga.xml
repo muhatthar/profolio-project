@@ -141,7 +141,7 @@
                 android:layout_height="48dp"
                 android:layout_marginBottom="44dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Next"
+                android:text="Let's Go"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="20sp"

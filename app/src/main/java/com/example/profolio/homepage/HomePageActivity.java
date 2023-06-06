@@ -25,6 +25,7 @@ import com.example.profolio.add.AddKepanitiaanActivity;
 import com.example.profolio.add.AddOrganisasiActivity;
 import com.example.profolio.add.AddPrestasiActivity;
 import com.example.profolio.document.DocumentPageFragment;
+import com.example.profolio.edit.EditProfileActivity;
 import com.example.profolio.profile.ProfilePageFragment;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -35,7 +36,7 @@ public class HomePageActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
 
     FloatingActionButton btn_add_organisasi, btn_add_kepanitiaan, btn_add_prestasi;
-    ExtendedFloatingActionButton btn_add;
+    ExtendedFloatingActionButton btn_add, btn_edit_profile;
     TextView organisasiTv, kepanitiaanTv, prestasiTv;
     Boolean isAllFABVisible;
     @Override
@@ -64,6 +65,7 @@ public class HomePageActivity extends AppCompatActivity {
         linearLayout = findViewById(R.id.navbarLayout);
 
         btn_add = findViewById(R.id.btn_add);
+        btn_edit_profile = findViewById(R.id.btn_edit_profile);
         btn_add_organisasi = findViewById(R.id.btn_add_organisasi);
         btn_add_kepanitiaan = findViewById(R.id.btn_add_kepanitiaan);
         btn_add_prestasi = findViewById(R.id.btn_add_prestasi);
@@ -135,6 +137,9 @@ public class HomePageActivity extends AppCompatActivity {
 //                documentText.setVisibility(View.GONE);
 //                profileText.setVisibility(View.GONE);
 
+                btn_add.setVisibility(View.VISIBLE);
+                btn_edit_profile.setVisibility(View.GONE);
+
                 documentImage.setImageResource(R.drawable.ic_document);
                 profileImage.setImageResource(R.drawable.ic_profile);
 
@@ -164,6 +169,9 @@ public class HomePageActivity extends AppCompatActivity {
 //                homeText.setVisibility(View.GONE);
 //                profileText.setVisibility(View.GONE);
 
+                btn_add.setVisibility(View.GONE);
+                btn_edit_profile.setVisibility(View.GONE);
+
                 homeImage.setImageResource(R.drawable.ic_homepage);
                 profileImage.setImageResource(R.drawable.ic_profile);
 
@@ -192,6 +200,16 @@ public class HomePageActivity extends AppCompatActivity {
             if (selectedtab != 3) {
 //                homeText.setVisibility(View.GONE);
 //                documentText.setVisibility(View.GONE);
+
+                btn_add.setVisibility(View.GONE);
+                btn_edit_profile.setVisibility(View.VISIBLE);
+                btn_edit_profile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent editProfile = new Intent(HomePageActivity.this, EditProfileActivity.class);
+                        startActivity(editProfile);
+                    }
+                });
 
                 homeImage.setImageResource(R.drawable.ic_homepage);
                 documentImage.setImageResource(R.drawable.ic_document);
