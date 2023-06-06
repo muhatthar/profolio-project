@@ -158,19 +158,6 @@ public class AddOrganisasiActivity extends AppCompatActivity {
                         Toast.makeText(AddOrganisasiActivity.this, "Data failed to add", Toast.LENGTH_SHORT).show();
                     }
                 });
-//                database.child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
-//                        getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//                        Toast.makeText(AddOrganisasiActivity.this, "Data has been added", Toast.LENGTH_SHORT).show();
-//                        startActivity(new Intent(AddOrganisasiActivity.this, HomePageActivity.class));
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(AddOrganisasiActivity.this, "Data failed to add", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
             }
         });
     }
