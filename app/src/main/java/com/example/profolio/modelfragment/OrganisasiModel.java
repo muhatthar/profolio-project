@@ -1,20 +1,21 @@
-package com.example.profolio.ModelFragment;
+package com.example.profolio.modelfragment;
 
 public class OrganisasiModel {
 
-    private String namaOrganisasi, jabatanOrganisasi, tahunMulaiOrganisasi, tahunSelesaiOrganisasi, deskripsiOrganisasi;
+    private String namaOrganisasi, jabatanOrganisasi, tahunMulaiOrganisasi, tahunSelesaiOrganisasi, deskripsiOrganisasi, sertifOrganisasi;
     private String key;
 
     public OrganisasiModel() {
 
     }
 
-    public OrganisasiModel(String namaOrganisasi, String jabatanOrganisasi, String tahunMulaiOrganisasi, String tahunSelesaiOrganisasi, String deskripsiOrganisasi) {
+    public OrganisasiModel(String namaOrganisasi, String jabatanOrganisasi, String tahunMulaiOrganisasi, String tahunSelesaiOrganisasi, String deskripsiOrganisasi, String sertifOrganisasi) {
         this.namaOrganisasi = namaOrganisasi;
         this.jabatanOrganisasi = jabatanOrganisasi;
         this.tahunMulaiOrganisasi = tahunMulaiOrganisasi;
         this.tahunSelesaiOrganisasi = tahunSelesaiOrganisasi;
         this.deskripsiOrganisasi = deskripsiOrganisasi;
+        this.sertifOrganisasi = sertifOrganisasi;
     }
 
     public String getNamaOrganisasi() {
@@ -63,6 +64,14 @@ public class OrganisasiModel {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getSertifOrganisasi() {
+        return sertifOrganisasi;
+    }
+
+    public void setSertifOrganisasi(String sertifOrganisasi) {
+        this.sertifOrganisasi = sertifOrganisasi;
     }
 }
 

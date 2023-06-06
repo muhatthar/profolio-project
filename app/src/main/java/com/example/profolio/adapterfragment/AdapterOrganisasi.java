@@ -1,24 +1,22 @@
-package com.example.profolio.AdapterFragment;
+package com.example.profolio.adapterfragment;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.profolio.ModelFragment.OrganisasiModel;
+import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.R;
 import com.example.profolio.edit.EditOrganisasiActivity;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,6 +24,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -47,9 +47,10 @@ public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.Or
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterOrganisasi.OrganisasiViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterOrganisasi.OrganisasiViewHolder holder, @SuppressLint("RecyclerView") int position) {
         //Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         OrganisasiModel organisasiData = organisasiItems.get(position);
+
         holder.tvTitleOrganisasi.setText(organisasiData.getNamaOrganisasi());
         holder.tvJabatanOrganisas.setText(organisasiData.getJabatanOrganisasi());
         holder.tvDeskripsiOrganisasi.setText(organisasiData.getDeskripsiOrganisasi());
@@ -71,12 +72,16 @@ public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.Or
             editForm.putExtra("jabatan", organisasiData.getJabatanOrganisasi());
             editForm.putExtra("tahunMulai", organisasiData.getTahunMulaiOrganisasi());
             editForm.putExtra("tahunSelesai", organisasiData.getTahunSelesaiOrganisasi());
+            editForm.putExtra("sertifikat", organisasiData.getSertifOrganisasi());
             context.startActivity(editForm);
         });
 
         holder.btn_delete_organisasi.setOnClickListener(v -> {
             Dialog popUp = new Dialog(context);
             popUp.setContentView(R.layout.popup_1_delete);
+            Window window = popUp.getWindow();
+            WindowManager.LayoutParams layoutParams = window.getAttributes();
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
 
             AppCompatButton cancel = popUp.findViewById(R.id.btnDeleteCancel);
             AppCompatButton confirm = popUp.findViewById(R.id.btnDeleteConfirm);
@@ -129,7 +134,6 @@ public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.Or
             tvJabatanOrganisas = itemView.findViewById(R.id.tvJabatanOrganisas);
             tvPeriodeOrganisasi = itemView.findViewById(R.id.tvPeriodeOrganisasi);
             tvDeskripsiOrganisasi = itemView.findViewById(R.id.tvDeskripsiOrganisasi);
-
             btn_delete_organisasi = itemView.findViewById(R.id.btn_delete_organisasi);
             btn_edit_organisasi = itemView.findViewById(R.id.btn_edit_organisasi);
         }

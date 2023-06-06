@@ -11,12 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
+import android.widget.TextView;
 
-import com.example.profolio.AdapterFragment.AdapterOrganisasi;
-import com.example.profolio.ModelFragment.OrganisasiModel;
+import com.example.profolio.adapterfragment.AdapterOrganisasi;
+import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.R;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -80,7 +79,6 @@ public class OrganisasiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View organisasiView = inflater.inflate(R.layout.fragment_organisasi, container, false);
-
         rvOrganisasi = organisasiView.findViewById(R.id.rvOrganisasi);
         RecyclerView.LayoutManager mLayout = new LinearLayoutManager(getContext());
         rvOrganisasi.setLayoutManager(mLayout);

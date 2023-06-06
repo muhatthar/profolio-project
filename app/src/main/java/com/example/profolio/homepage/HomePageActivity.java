@@ -24,6 +24,8 @@ import com.example.profolio.R;
 import com.example.profolio.add.AddKepanitiaanActivity;
 import com.example.profolio.add.AddOrganisasiActivity;
 import com.example.profolio.add.AddPrestasiActivity;
+import com.example.profolio.document.DocumentPageFragment;
+import com.example.profolio.profile.ProfilePageFragment;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -40,6 +42,8 @@ public class HomePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        replaceFragment(new HomePageFragment());
 
         final LinearLayout homeLayout = findViewById(R.id.homeLayout);
         final LinearLayout documentLayout = findViewById(R.id.documentLayout);
@@ -149,6 +153,8 @@ public class HomePageActivity extends AppCompatActivity {
                 scaleAnimation.setFillAfter(true);
                 homeNavbar.startAnimation(scaleAnimation);
 
+                replaceFragment(new HomePageFragment());
+
                 selectedtab = 1;
             }
         });
@@ -175,6 +181,8 @@ public class HomePageActivity extends AppCompatActivity {
                 scaleAnimation.setDuration(200);
                 scaleAnimation.setFillAfter(true);
                 documentNavbar.startAnimation(scaleAnimation);
+
+                replaceFragment(new DocumentPageFragment());
 
                 selectedtab = 2;
             }
@@ -203,19 +211,14 @@ public class HomePageActivity extends AppCompatActivity {
                 scaleAnimation.setFillAfter(true);
                 profileNavbar.startAnimation(scaleAnimation);
 
+                replaceFragment(new ProfilePageFragment());
+
                 selectedtab = 3;
             }
         });
 
 
     }
-
-//    private void replaceFragment(Fragment fragment) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.viewPager, OrganisasiFragment.class, null);
-//        fragmentTransaction.commit();
-//    }
 
     private void animateFAB(boolean show) {
         if (show) {
@@ -285,5 +288,13 @@ public class HomePageActivity extends AppCompatActivity {
             isAllFABVisible = false;
         }
     }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+        fragmentTransaction.commit();
+    }
+
 
 }

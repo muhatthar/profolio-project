@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/CardViewPopUpEditSatu"
@@ -9,26 +9,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="28dp"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Sure you want to changes?"
-            android:textColor="@color/black"
+            android:textColor="#54595E"
             android:textSize="14sp"></TextView>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginBottom="10.85dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Are you sure you want to changes this?"
             android:textColor="#787575"
@@ -40,16 +40,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="28dp"
-            android:layout_marginTop="10dp"
             android:background="@color/white"
+            android:layout_marginStart="26.13dp"
+            android:layout_marginEnd="27.88dp"
+            android:layout_marginBottom="28.44dp"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
                 android:layout_weight="1"
+                android:layout_marginEnd="12dp"
                 android:background="@color/white"
                 android:orientation="vertical">
 
@@ -57,20 +58,18 @@
                     android:id="@+id/btnEditCancel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="10dp"
                     android:background="@drawable/btn_round_back_abu"
                     android:fontFamily="@font/poppins_semibold"
-                    android:padding="12dp"
-                    android:paddingHorizontal="32dp"
+                    android:textAllCaps="false"
                     android:text="Cancel"
                     android:textColor="#4F4F4F"></androidx.appcompat.widget.AppCompatButton>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
                 android:layout_weight="1"
+                android:layout_marginStart="12dp"
                 android:background="@color/white"
                 android:orientation="vertical">
 
@@ -78,13 +77,11 @@
                     android:id="@+id/btnEditConfirm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="10dp"
                     android:background="@drawable/btn_round_back_gradient"
-                    android:fontFamily="@font/poppins_medium"
+                    android:fontFamily="@font/poppins_semibold"
                     android:text="Yes, Confirm"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="14sp">
+                    android:textColor="@color/white">
 
                 </androidx.appcompat.widget.AppCompatButton>
             </LinearLayout>
@@ -93,4 +90,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
