@@ -30,17 +30,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@drawable/ic_circle_white"
             android:gravity="center">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnEditImageProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ivProfile"
+                android:layout_alignBottom="@+id/ivProfile"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                app:backgroundTint="@color/white"
+                android:foreground="@drawable/ic_camera"
+                android:foregroundGravity="center" />
+
             <ImageView
+                android:id="@+id/ivProfile"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
                 android:src="@drawable/ic_avatar_profile" />
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout

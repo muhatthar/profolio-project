@@ -133,7 +133,7 @@ public class EditPrestasiActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         String getSertifikatPrestasi = task.getResult().toString();
 
-                                        database.child("Prestasi").child(key).setValue(new PrestasiModel(getNamaPrestasi, getJabatanPrestasi,
+                                        database.child("Users").child("Prestasi").child(key).setValue(new PrestasiModel(getNamaPrestasi, getJabatanPrestasi,
                                                 getDeskripsiPrestasi, getTahunPrestasi, getSertifikatPrestasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

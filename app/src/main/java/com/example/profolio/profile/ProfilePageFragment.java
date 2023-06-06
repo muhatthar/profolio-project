@@ -15,12 +15,14 @@ import com.example.profolio.R;
 import com.example.profolio.adapterfragment.AdapterKepanitiaan;
 import com.example.profolio.adapterfragment.AdapterOrganisasi;
 import com.example.profolio.adapterfragment.AdapterPrestasi;
+import com.example.profolio.edit.EditOrganisasiActivity;
 import com.example.profolio.edit.EditProfileActivity;
 import com.example.profolio.modelfragment.KepanitiaanModel;
 import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.modelfragment.PrestasiModel;
 import com.example.profolio.modelfragment.UserModel;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -117,7 +119,9 @@ public class ProfilePageFragment extends Fragment {
 
         btn_edit_profile = view.findViewById(R.id.btn_edit_profile);
 
-        database.child("Organisasi").addListenerForSingleValueEvent(new ValueEventListener() {
+        String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        database.child("Users").child(userKey).child("Organisasi").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 long childOrganisasi = snapshot.getChildrenCount();
@@ -129,7 +133,7 @@ public class ProfilePageFragment extends Fragment {
 
             }
         });
-        database.child("Kepanitiaan").addListenerForSingleValueEvent(new ValueEventListener() {
+        database.child("Users").child(userKey).child("Kepanitiaan").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 long chidKepanitiaan = snapshot.getChildrenCount();
@@ -141,7 +145,7 @@ public class ProfilePageFragment extends Fragment {
 
             }
         });
-        database.child("Prestasi").addListenerForSingleValueEvent(new ValueEventListener() {
+        database.child("Users").child(userKey).child("Prestasi").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 long childPrestasi = snapshot.getChildrenCount();
@@ -171,11 +175,13 @@ public class ProfilePageFragment extends Fragment {
                 sendData.putExtra("universityperiod", user.getUniversityPeriod());
                 sendData.putExtra("skills", user.getSkills());
                 sendData.putExtra("deskripsi", user.getSelfDescription());
-
                 sendData.putExtra("jumlahorganisasi", jumlahOrganisasi.getText().toString());
                 sendData.putExtra("jumlahkepanitiaan", jumlahKepanitiaan.getText().toString());
                 sendData.putExtra("jumlahprestasi", jumlahPrestasi.getText().toString());
                 startActivity(sendData);
+            } else if (userItems.size() == 0){
+                Intent addUser = new Intent(getContext(), EditOrganisasiActivity.class);
+
             }
         });
 

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.profolio.adapterfragment.SectionPagerAdapter;
 import com.example.profolio.R;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -93,7 +94,10 @@ public class HomePageFragment extends Fragment {
         slogan = view.findViewById(R.id.slogan);
         helloUser = view.findViewById(R.id.helloUser);
 
-        database.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+//        String keyUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference userKey = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        userKey.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -105,7 +109,6 @@ public class HomePageFragment extends Fragment {
                         }
                     }
                 }
-
             }
 
             @Override

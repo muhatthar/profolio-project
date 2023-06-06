@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.profolio.adapterfragment.AdapterOrganisasi;
 import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -90,7 +91,8 @@ public class OrganisasiFragment extends Fragment {
     }
 
     private void showData() {
-        database.child("Organisasi").addValueEventListener(new ValueEventListener() {
+        String keyUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.child("Users").child(keyUser).child("Organisasi").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 organisasiItems = new ArrayList<>();

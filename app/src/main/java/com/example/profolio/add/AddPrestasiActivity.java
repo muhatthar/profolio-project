@@ -90,7 +90,7 @@ public class AddPrestasiActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Uri> task) {
                                 String getSertifikatPrestasi = task.getResult().toString();
 
-                                database.child("Prestasi").push().setValue(new PrestasiModel(getNamaPrestasi,
+                                database.child("Users").child("Prestasi").push().setValue(new PrestasiModel(getNamaPrestasi,
                                         getJabatanPrestasi, getDeskripsiPrestasi, getTahunPrestasi, getSertifikatPrestasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {

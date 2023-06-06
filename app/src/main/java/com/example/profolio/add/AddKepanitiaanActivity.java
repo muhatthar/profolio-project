@@ -94,7 +94,7 @@ public class AddKepanitiaanActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Uri> task) {
                                 String getSertifOrganisasi = task.getResult().toString();
 
-                                database.child("Kepanitiaan").push().setValue(new KepanitiaanModel(getNamaKepanitiaan, getJabatanKepanitiaan, getDeskripsiKepanitiaan, getTahunKepanitiaan, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                database.child("Users").child("Kepanitiaan").push().setValue(new KepanitiaanModel(getNamaKepanitiaan, getJabatanKepanitiaan, getDeskripsiKepanitiaan, getTahunKepanitiaan, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         startActivity(new Intent(AddKepanitiaanActivity.this, HomePageActivity.class));

@@ -23,13 +23,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterPageActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
     private TextView signIn;
-    private EditText etEmail, etPassword, etConfPassword;
+    private EditText etEmail, etPassword, etConfPassword, etUsername;
     private Button btnRegister;
     private FirebaseAuth mAuth;
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class RegisterPageActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         etConfPassword = findViewById(R.id.et_confirmPassword);
+        etUsername = findViewById(R.id.et_username);
 
         mAuth = FirebaseAuth.getInstance();
         linearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -119,8 +123,10 @@ public class RegisterPageActivity extends AppCompatActivity {
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);

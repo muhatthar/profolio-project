@@ -90,7 +90,7 @@ public class AdapterPrestasi extends RecyclerView.Adapter<AdapterPrestasi.Presta
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    database.child("Prestasi").child(prestasiData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    database.child("Users").child("Prestasi").child(prestasiData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(context, "Delete data succesfully", Toast.LENGTH_SHORT).show();

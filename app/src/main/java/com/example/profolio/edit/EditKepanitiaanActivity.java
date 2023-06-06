@@ -132,7 +132,7 @@ public class EditKepanitiaanActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         String getSertifKepanitiaan = task.getResult().toString();
 
-                                        database.child("Kepanitiaan").child(key).setValue(new KepanitiaanModel(getNamaKepanitiaan, getJabatanKepanitiaan,
+                                        database.child("Users").child("Kepanitiaan").child(key).setValue(new KepanitiaanModel(getNamaKepanitiaan, getJabatanKepanitiaan,
                                                 getDeskripsiKepanitiaan, getTahunKepanitiaan, getSertifKepanitiaan)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

@@ -91,7 +91,7 @@ public class AdapterKepanitiaan extends RecyclerView.Adapter<AdapterKepanitiaan.
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    database.child("Kepanitiaan").child(kepanitiaanData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    database.child("Users").child("Kepanitiaan").child(kepanitiaanData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(context, "Delete data succesfully", Toast.LENGTH_SHORT).show();

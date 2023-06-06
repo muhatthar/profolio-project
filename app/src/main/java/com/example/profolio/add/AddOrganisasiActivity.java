@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -60,51 +61,8 @@ public class AddOrganisasiActivity extends AppCompatActivity {
             addImg.setType("image/*");
             startActivityForResult(addImg, galleryCode);
         });
-
-//        btnAddOrganisasi.setOnClickListener(v -> {
-////            uploadImage();
-//            String getNamaOrganisasi = edtNamaOrganisasi.getText().toString();
-//            String getJabatanOrganisasi = edtJabatanOrganisasi.getText().toString();
-//            String getDeskripsiOrganisasi = edtDeskripsiOrganisasi.getText().toString();
-//            String getTahunMulaiOrganisasi = edtTahunMulaiOrganisasi.getText().toString();
-//            String getTahunSelesaiOrganisasi = edtTahunSelesaiOrganisasi.getText().toString();
-//
-//            if (getNamaOrganisasi.isEmpty()) {
-//                edtNamaOrganisasi.setError("Entry Organisasi Name");
-//            } else if (getDeskripsiOrganisasi.isEmpty()) {
-//                edtDeskripsiOrganisasi.setError("Entry Organisasi Description");
-//            } else if (getJabatanOrganisasi.isEmpty()) {
-//                edtJabatanOrganisasi.setError("Entry Jabatan Status");
-//            } else if (getTahunMulaiOrganisasi.isEmpty()) {
-//                edtTahunMulaiOrganisasi.setError("Entry Tahun Mulai");
-//            } else if (getTahunSelesaiOrganisasi.isEmpty()) {
-//                edtTahunSelesaiOrganisasi.setError("Entry Tahun Selesai");
-//            } else {
-//                database.child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
-//                        getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//                        Toast.makeText(AddOrganisasiActivity.this, "Data has been added", Toast.LENGTH_SHORT).show();
-//                        startActivity(new Intent(AddOrganisasiActivity.this, HomePageActivity.class));
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(AddOrganisasiActivity.this, "Data failed to add", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            }
-//        });
-
     }
 
-//    private void selectImage(){
-//        Intent selectImg = new Intent();
-//        selectImg.setType("image/*");
-//        selectImg.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(selectImg, 100);
-//    }
-//
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -140,8 +98,9 @@ public class AddOrganisasiActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
                                 String getSertifOrganisasi = task.getResult().toString();
+                                String keyUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                database.child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
+                                database.child("Users").child(keyUser).child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
                                         getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
@@ -158,39 +117,7 @@ public class AddOrganisasiActivity extends AppCompatActivity {
                         Toast.makeText(AddOrganisasiActivity.this, "Data failed to add", Toast.LENGTH_SHORT).show();
                     }
                 });
-//                database.child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
-//                        getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//                        Toast.makeText(AddOrganisasiActivity.this, "Data has been added", Toast.LENGTH_SHORT).show();
-//                        startActivity(new Intent(AddOrganisasiActivity.this, HomePageActivity.class));
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(AddOrganisasiActivity.this, "Data failed to add", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
             }
         });
     }
-//
-//    private void uploadImage(){
-//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault());
-//        Date now = new Date();
-//        String fileName = formatter.format(now);
-//        storageReference = FirebaseStorage.getInstance().getReference("images/*"+fileName);
-//        storageReference.putFile(imageUri)
-//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                        ivOrganisasi.setImageURI(null);
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(AddOrganisasiActivity.this, "Failed to upload image", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//    }
 }

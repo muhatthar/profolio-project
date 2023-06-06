@@ -90,7 +90,7 @@ public class PrestasiFragment extends Fragment {
         return prestasiView;
     }
     private void showData() {
-        database.child("Prestasi").addValueEventListener(new ValueEventListener() {
+        database.child("Users").child("Prestasi").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 prestasiItems = new ArrayList<>();

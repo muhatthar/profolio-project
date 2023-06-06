@@ -91,7 +91,7 @@ public class KepanitiaanFragment extends Fragment {
         return kepanitiaanView;
     }
     private void showData() {
-        database.child("Kepanitiaan").addValueEventListener(new ValueEventListener() {
+        database.child("Users").child("Kepanitiaan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 kepanitiaanItems = new ArrayList<>();
