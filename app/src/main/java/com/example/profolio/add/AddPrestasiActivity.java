@@ -1,25 +1,37 @@
 package com.example.profolio.add;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.profolio.modelfragment.PrestasiModel;
 import com.example.profolio.R;
 import com.example.profolio.homepage.HomePageActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class AddPrestasiActivity extends AppCompatActivity {
     EditText edtNamaPrestasi, edtDeskripsiPrestasi, edtJabatanPrestasi, edtTahunPrestasi;
-    AppCompatButton btnAddPrestasi;
+    ImageView ivPrestasi;
+    AppCompatButton btnAddPrestasi, btnUploadSertif;
+    Uri imageUri = null;
+    private static final int galleryCode = 1;
+    FirebaseStorage mStorage;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +42,28 @@ public class AddPrestasiActivity extends AppCompatActivity {
         edtDeskripsiPrestasi = findViewById(R.id.edtDeskripsiPrestasi);
         edtJabatanPrestasi = findViewById(R.id.edtJabatanPrestasi);
         edtTahunPrestasi = findViewById(R.id.edtTahunPrestasi);
+        ivPrestasi = findViewById(R.id.iv_Prestasi);
 
+        btnUploadSertif = findViewById(R.id.btn_UploadSertif);
         btnAddPrestasi = findViewById(R.id.btnAddPrestasi);
+
+        mStorage = FirebaseStorage.getInstance();
+
+        btnUploadSertif.setOnClickListener(v -> {
+            Intent addImg = new Intent(Intent.ACTION_GET_CONTENT);
+            addImg.setType("image/*");
+            startActivityForResult(addImg, galleryCode);
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == galleryCode && resultCode == RESULT_OK){
+            imageUri = data.getData();
+            ivPrestasi.setImageURI(imageUri);
+        }
 
         btnAddPrestasi.setOnClickListener(v -> {
             String getNamaPrestasi = edtNamaPrestasi.getText().toString();
@@ -49,12 +81,25 @@ public class AddPrestasiActivity extends AppCompatActivity {
             } else if (getTahunPrestasi.isEmpty()) {
                 edtTahunPrestasi.setError("Entry Tahun Mulai");
             } else {
-                database.child("Prestasi").push().setValue(new PrestasiModel(getNamaPrestasi,
-                        getJabatanPrestasi, getDeskripsiPrestasi, getTahunPrestasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                StorageReference filePath = mStorage.getReference().child("imagePostPrestasi").child(imageUri.getLastPathSegment());
+                filePath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onSuccess(Void unused) {
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Task<Uri> downloadUrl = taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+                                String getSertifikatPrestasi = task.getResult().toString();
+
+                                database.child("Prestasi").push().setValue(new PrestasiModel(getNamaPrestasi,
+                                        getJabatanPrestasi, getDeskripsiPrestasi, getTahunPrestasi, getSertifikatPrestasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        startActivity(new Intent(AddPrestasiActivity.this, HomePageActivity.class));
+                                    }
+                                });
+                            }
+                        });
                         Toast.makeText(AddPrestasiActivity.this, "Data has been added", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(AddPrestasiActivity.this, HomePageActivity.class));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
