@@ -18,11 +18,14 @@ import android.widget.Toast;
 
 import com.example.profolio.R;
 import com.example.profolio.login.LoginPageActivity;
+import com.example.profolio.modelfragment.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterPageActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
@@ -30,6 +33,7 @@ public class RegisterPageActivity extends AppCompatActivity {
     private EditText etEmail, etPassword, etConfPassword;
     private Button btnRegister;
     private FirebaseAuth mAuth;
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

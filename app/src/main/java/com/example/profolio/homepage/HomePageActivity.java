@@ -68,6 +68,7 @@ public class HomePageActivity extends AppCompatActivity {
         final TextView documentText = findViewById(R.id.documentText);
         final TextView profileText = findViewById(R.id.profileText);
 
+
         linearLayout = findViewById(R.id.navbarLayout);
 
         btn_add = findViewById(R.id.btn_add);
@@ -172,11 +173,15 @@ public class HomePageActivity extends AppCompatActivity {
 
         documentLayout.setOnClickListener(v -> {
             if (selectedtab != 2) {
-//                homeText.setVisibility(View.GONE);
-//                profileText.setVisibility(View.GONE);
 
                 btn_add.setVisibility(View.GONE);
-//                btn_edit_profile.setVisibility(View.GONE);
+                btn_add_organisasi.setVisibility(View.GONE);
+                btn_add_kepanitiaan.setVisibility(View.GONE);
+                btn_add_prestasi.setVisibility(View.GONE);
+
+                organisasiTv.setVisibility(View.GONE);
+                kepanitiaanTv.setVisibility(View.GONE);
+                prestasiTv.setVisibility(View.GONE);
 
                 homeImage.setImageResource(R.drawable.ic_homepage);
                 profileImage.setImageResource(R.drawable.ic_profile);
@@ -204,18 +209,16 @@ public class HomePageActivity extends AppCompatActivity {
 
         profileLayout.setOnClickListener(v -> {
             if (selectedtab != 3) {
-//                homeText.setVisibility(View.GONE);
-//                documentText.setVisibility(View.GONE);
+
 
                 btn_add.setVisibility(View.GONE);
-//                btn_edit_profile.setVisibility(View.VISIBLE);
-//                btn_edit_profile.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent editProfile = new Intent(HomePageActivity.this, EditProfileActivity.class);
-//                        startActivity(editProfile);
-//                    }
-//                });
+                btn_add_organisasi.setVisibility(View.GONE);
+                btn_add_kepanitiaan.setVisibility(View.GONE);
+                btn_add_prestasi.setVisibility(View.GONE);
+
+                organisasiTv.setVisibility(View.GONE);
+                kepanitiaanTv.setVisibility(View.GONE);
+                prestasiTv.setVisibility(View.GONE);
 
                 homeImage.setImageResource(R.drawable.ic_homepage);
                 documentImage.setImageResource(R.drawable.ic_document);
