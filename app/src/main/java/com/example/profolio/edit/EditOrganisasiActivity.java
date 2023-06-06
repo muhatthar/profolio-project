@@ -37,11 +37,9 @@ public class EditOrganisasiActivity extends AppCompatActivity {
     TextView edtNamaOrganisasi2, edtDeskripsiOrganisasi2,
             edtJabatanOrganisasi2, edtTahunMulaiOrganisasi2, edtTahunSelesaiOrganisasi2;
     ImageView ivOrganisasi2;
-    private List<OrganisasiModel> organisasiModels;
     Uri imageUri = null;
     FirebaseStorage mStorage;
     private static final int galleryCode = 1;
-
     AppCompatButton btnEditOrganisasi, btnUploadSertif2;
 
     AdapterOrganisasi adapterOrganisasi;

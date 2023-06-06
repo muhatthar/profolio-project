@@ -1,18 +1,20 @@
 package com.example.profolio.modelfragment;
 
 public class KepanitiaanModel {
-    private String namaKepanitiaan, jabatanKepanitiaan, deskripsiKepanitiaan, tahunKepanitiaan;
+    private String namaKepanitiaan, jabatanKepanitiaan, deskripsiKepanitiaan, tahunKepanitiaan, sertifKepanitiaan;
     private String key;
 
     public KepanitiaanModel() {
 
     }
 
-    public KepanitiaanModel(String namaKepanitiaan, String jabatanKepanitiaan, String deskripsiKepanitiaan, String tahunKepanitiaan) {
+    public KepanitiaanModel(String namaKepanitiaan, String jabatanKepanitiaan, String deskripsiKepanitiaan, String tahunKepanitiaan, String sertifKepanitiaan) {
         this.namaKepanitiaan = namaKepanitiaan;
         this.jabatanKepanitiaan = jabatanKepanitiaan;
         this.deskripsiKepanitiaan = deskripsiKepanitiaan;
         this.tahunKepanitiaan = tahunKepanitiaan;
+        this.sertifKepanitiaan = sertifKepanitiaan;
+
     }
 
     public String getNamaKepanitiaan() {
@@ -53,6 +55,14 @@ public class KepanitiaanModel {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getSertifKepanitiaan() {
+        return sertifKepanitiaan;
+    }
+
+    public void setSertifKepanitiaan(String sertifKepanitiaan) {
+        this.sertifKepanitiaan = sertifKepanitiaan;
     }
 }
 

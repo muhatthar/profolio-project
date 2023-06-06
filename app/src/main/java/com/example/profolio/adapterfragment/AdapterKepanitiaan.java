@@ -1,5 +1,6 @@
 package com.example.profolio.adapterfragment;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -44,7 +45,7 @@ public class AdapterKepanitiaan extends RecyclerView.Adapter<AdapterKepanitiaan.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterKepanitiaan.KepanitiaanViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterKepanitiaan.KepanitiaanViewHolder holder, @SuppressLint("RecyclerView") int position) {
         KepanitiaanModel kepanitiaanData = kepanitiaanItems.get(position);
         holder.tvTitleKepanitiaan.setText(kepanitiaanData.getNamaKepanitiaan());
         holder.tvJabatanKepanitiaan.setText(kepanitiaanData.getJabatanKepanitiaan());
@@ -65,6 +66,7 @@ public class AdapterKepanitiaan extends RecyclerView.Adapter<AdapterKepanitiaan.
             editForm.putExtra("deskripsi", kepanitiaanData.getDeskripsiKepanitiaan());
             editForm.putExtra("jabatan", kepanitiaanData.getJabatanKepanitiaan());
             editForm.putExtra("tahun", kepanitiaanData.getTahunKepanitiaan());
+            editForm.putExtra("sertifikat", kepanitiaanData.getSertifKepanitiaan());
 
             context.startActivity(editForm);
         });
