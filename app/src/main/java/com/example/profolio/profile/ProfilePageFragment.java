@@ -17,6 +17,7 @@ import com.example.profolio.adapterfragment.AdapterOrganisasi;
 import com.example.profolio.adapterfragment.AdapterPrestasi;
 import com.example.profolio.edit.EditOrganisasiActivity;
 import com.example.profolio.edit.EditProfileActivity;
+import com.example.profolio.login.LoginPageActivity;
 import com.example.profolio.modelfragment.KepanitiaanModel;
 import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.modelfragment.PrestasiModel;
@@ -48,6 +49,7 @@ public class ProfilePageFragment extends Fragment {
     // TODO: Rename and change types of parameters
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    FirebaseAuth mAuth;
 
     List<UserModel> userItems;
 
@@ -55,6 +57,8 @@ public class ProfilePageFragment extends Fragment {
     TextView tvProfileUsername, tvProfileFirstName, tvProfileLastName, tvProfilePhone,
     tvProfileEmail, tvProfileSMA, tvProfileSMAPeriod, tvProfileUniversity, tvProfileUniversityPeriod,
             tvProfileSkills, tvProfileDeskripsi;
+
+    TextView btnLogout;
 
     TextView jumlahOrganisasi, jumlahKepanitiaan, jumlahPrestasi;
 
@@ -118,8 +122,14 @@ public class ProfilePageFragment extends Fragment {
         jumlahPrestasi = view.findViewById(R.id.jmlhPrestasi);
 
         btn_edit_profile = view.findViewById(R.id.btn_edit_profile);
+        btnLogout = view.findViewById(R.id.btn_logout);
 
         String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        btnLogout.setOnClickListener(v -> {
+//            logOut();
+        });
+
 
         database.child("Users").child(userKey).child("Organisasi").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -179,14 +189,21 @@ public class ProfilePageFragment extends Fragment {
                 sendData.putExtra("jumlahkepanitiaan", jumlahKepanitiaan.getText().toString());
                 sendData.putExtra("jumlahprestasi", jumlahPrestasi.getText().toString());
                 startActivity(sendData);
-            } else if (userItems.size() == 0){
-                Intent addUser = new Intent(getContext(), EditOrganisasiActivity.class);
-
+//            } else if (userItems.size() == 0){
+//                Intent addUser = new Intent(getContext(), EditOrganisasiActivity.class);
+//
             }
         });
 
         return view;
     }
+
+//    public void logOut(){
+//        mAuth.signOut();
+//        Intent intent = new Intent(getContext(), LoginPageActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
+//    }
 
     private void showData() {
         database.child("Users").addValueEventListener(new ValueEventListener() {

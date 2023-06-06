@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.profolio.R;
 import com.example.profolio.login.LoginPageActivity;
+import com.example.profolio.modelfragment.UserModel;
+import com.example.profolio.profile.ProfilePageFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -121,11 +123,19 @@ public class RegisterPageActivity extends AppCompatActivity {
             return;
         }
 
+        String getUsername = etUsername.getText().toString();
+        String getEmail = etEmail.getText().toString();
+
+        Intent sendData = new Intent(this, ProfilePageFragment.class);
+
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        database.child("Users").push().setValue(new UserModel(getUsername, "", "", "", getEmail, "", "",
+                                "", "", "", ""));
 
                         if (task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();

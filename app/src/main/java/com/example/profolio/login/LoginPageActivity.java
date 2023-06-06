@@ -73,12 +73,12 @@ public class LoginPageActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onStart(){
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }
+//    @Override
+//    public void onStart(){
+//        super.onStart();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        updateUI(currentUser);
+//    }
 
     public void updateUI(FirebaseUser user){
         if (user != null){
