@@ -201,6 +201,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tvProfileUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Username"
@@ -235,6 +236,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tvProfileFirstName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="First Name"
@@ -259,6 +261,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tvProfileLastName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Last Name"
@@ -289,6 +292,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tvProfilePhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+62812-xxx-xxx-xxx"
@@ -316,6 +320,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tvProfileEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="alexanderPandjaitan@gmail.com"
@@ -350,6 +355,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tvProfileSMA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Senior High School"
@@ -376,6 +382,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tvProfileSMAPeriod"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -414,6 +421,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tvProfileUniversity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="University"
@@ -440,6 +448,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tvProfileUniversityPeriod"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Period"
@@ -471,6 +480,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tvProfileSkills"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="University"
@@ -498,6 +508,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tvProfileDeskripsi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Description"

@@ -2,13 +2,27 @@ package com.example.profolio.profile;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.profolio.R;
+import com.example.profolio.adapterfragment.AdapterOrganisasi;
+import com.example.profolio.modelfragment.OrganisasiModel;
+import com.example.profolio.modelfragment.UserModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +37,16 @@ public class ProfilePageFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
+
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+
+    List<UserModel> userItems;
+
+    TextView tvProfileUsername, tvProfileFirstName, tvProfileLastName, tvProfilePhone,
+    tvProfileEmail, tvProfileSMA, tvProfileSMAPeriod, tvProfileUniversity, tvProfileUniversityPeriod,
+            tvProfileSkills, tvProfileDeskripsi;
+
+
     private String mParam1;
     private String mParam2;
 
@@ -61,6 +85,63 @@ public class ProfilePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_page, container, false);
+
+        userItems = new ArrayList<>();
+
+        tvProfileUsername = view.findViewById(R.id.tvProfileUsername);
+        tvProfileFirstName = view.findViewById(R.id.tvProfileFirstName);
+        tvProfileLastName = view.findViewById(R.id.tvProfileLastName);
+        tvProfilePhone = view.findViewById(R.id.tvProfilePhone);
+        tvProfileEmail = view.findViewById(R.id.tvProfileEmail);
+        tvProfileSMA = view.findViewById(R.id.tvProfileSMA);
+        tvProfileSMAPeriod = view.findViewById(R.id.tvProfileSMAPeriod);
+        tvProfileUniversity = view.findViewById(R.id.tvProfileUniversity);
+        tvProfileUniversityPeriod = view.findViewById(R.id.tvProfileUniversityPeriod);
+        tvProfileSkills = view.findViewById(R.id.tvProfileSkills);
+        tvProfileDeskripsi = view.findViewById(R.id.tvProfileDeskripsi);
+
+        showData();
+
+        return view;
+    }
+
+    private void showData() {
+        database.child("Users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    userItems = new ArrayList<>();
+                    for (DataSnapshot item : snapshot.getChildren()) {
+                        UserModel user = item.getValue(UserModel.class);
+                        user.setKey(item.getKey());
+                        userItems.add(user);
+                    }
+
+                    // Display the retrieved data
+                    if (!userItems.isEmpty()) {
+                        UserModel userData = userItems.get(0);
+                        tvProfileUsername.setText(userData.getUsername());
+                        tvProfileFirstName.setText(userData.getFirstName());
+                        tvProfileLastName.setText(userData.getLastName());
+                        tvProfilePhone.setText(userData.getPhone());
+                        tvProfileEmail.setText(userData.getEmail());
+                        tvProfileSMA.setText(userData.getSeniorHighSchool());
+                        tvProfileSMAPeriod.setText(userData.getSeniorHighSchoolPeriod());
+                        tvProfileUniversity.setText(userData.getUniversity());
+                        tvProfileUniversityPeriod.setText(userData.getUniversityPeriod());
+                        tvProfileSkills.setText(userData.getSkills());
+                        tvProfileDeskripsi.setText(userData.getSelfDescription());
+                    }
+                } else {
+                    // Data does not exist or is empty
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
