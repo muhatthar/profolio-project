@@ -3,10 +3,12 @@ package com.example.profolio.edit;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.profolio.R;
@@ -25,7 +27,7 @@ import java.util.List;
 public class EditProfileActivity extends AppCompatActivity {
 
     EditText edtProfileUsername, edtProfileFirstName, edtProfileLastName, edtProfilePhone, edtProfileEmail, edtProfileSMA, edtProfileSMAPeriod, edtProfileUniversity, edtProfileUniversityPeriod, edtProfileSkills, edtProfileDeskripsi;
-
+    TextView jumlahOrganisasi, jumlahKepanitiaan, jumlahPrestasi;
     AppCompatButton btn_save;
 
     List<UserModel> userItems;
@@ -49,6 +51,9 @@ public class EditProfileActivity extends AppCompatActivity {
         edtProfileSkills = findViewById(R.id.edtProfileSkills);
         edtProfileDeskripsi = findViewById(R.id.edtProfileDeskripsi);
         btn_save = findViewById(R.id.btnEditProfile);
+        jumlahOrganisasi =findViewById(R.id.jumlahOrganisasi);
+        jumlahKepanitiaan = findViewById(R.id.jumlahKepanitiaan);
+        jumlahPrestasi = findViewById(R.id.jumlahPrestasi);
 
         Intent getData = getIntent();
         String username = getData.getStringExtra("username");
@@ -63,6 +68,10 @@ public class EditProfileActivity extends AppCompatActivity {
         String skills = getData.getStringExtra("skills");
         String deskripsi = getData.getStringExtra("deskripsi");
 
+        String jmlhOrganisasi = getData.getStringExtra("jumlahorganisasi");
+        String jmlhKepanitiaan = getData.getStringExtra("jumlahkepanitiaan");
+        String jmlhPrestasi = getData.getStringExtra("jumlahprestasi");
+
         edtProfileUsername.setText(username);
         edtProfileFirstName.setText(firstname);
         edtProfileLastName.setText(lastname);
@@ -75,10 +84,13 @@ public class EditProfileActivity extends AppCompatActivity {
         edtProfileSkills.setText(skills);
         edtProfileDeskripsi.setText(deskripsi);
 
+        jumlahOrganisasi.setText(jmlhOrganisasi);
+        jumlahKepanitiaan.setText(jmlhKepanitiaan);
+        jumlahPrestasi.setText(jmlhPrestasi);
+
         btn_save.setOnClickListener(v -> {
             saveUserData();
-            Intent backToProfile = new Intent(this, ProfilePageFragment.class);
-            startActivity(backToProfile);
+            finish();
         });
 
 

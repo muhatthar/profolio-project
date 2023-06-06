@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/avatarPrf">
 
             <TextView
-                android:id="@+id/jmlhOrgOrg"
+                android:id="@+id/jmlhOrganisasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -106,7 +106,7 @@
             app:layout_constraintTop_toBottomOf="@+id/avatarPrf">
 
             <TextView
-                android:id="@+id/jmlhOrgKep"
+                android:id="@+id/jmlhKepanitiaan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -145,7 +145,7 @@
             app:layout_constraintTop_toBottomOf="@+id/avatarPrf">
 
             <TextView
-                android:id="@+id/jmlhOrgPres"
+                android:id="@+id/jmlhPrestasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

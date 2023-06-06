@@ -12,9 +12,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.profolio.R;
+import com.example.profolio.adapterfragment.AdapterKepanitiaan;
 import com.example.profolio.adapterfragment.AdapterOrganisasi;
+import com.example.profolio.adapterfragment.AdapterPrestasi;
 import com.example.profolio.edit.EditProfileActivity;
+import com.example.profolio.modelfragment.KepanitiaanModel;
 import com.example.profolio.modelfragment.OrganisasiModel;
+import com.example.profolio.modelfragment.PrestasiModel;
 import com.example.profolio.modelfragment.UserModel;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -46,10 +50,11 @@ public class ProfilePageFragment extends Fragment {
     List<UserModel> userItems;
 
     ExtendedFloatingActionButton btn_edit_profile;
-
     TextView tvProfileUsername, tvProfileFirstName, tvProfileLastName, tvProfilePhone,
     tvProfileEmail, tvProfileSMA, tvProfileSMAPeriod, tvProfileUniversity, tvProfileUniversityPeriod,
             tvProfileSkills, tvProfileDeskripsi;
+
+    TextView jumlahOrganisasi, jumlahKepanitiaan, jumlahPrestasi;
 
 
     private String mParam1;
@@ -106,7 +111,48 @@ public class ProfilePageFragment extends Fragment {
         tvProfileSkills = view.findViewById(R.id.tvProfileSkills);
         tvProfileDeskripsi = view.findViewById(R.id.tvProfileDeskripsi);
 
+        jumlahOrganisasi = view.findViewById(R.id.jmlhOrganisasi);
+        jumlahKepanitiaan = view.findViewById(R.id.jmlhKepanitiaan);
+        jumlahPrestasi = view.findViewById(R.id.jmlhPrestasi);
+
         btn_edit_profile = view.findViewById(R.id.btn_edit_profile);
+
+        database.child("Organisasi").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                long childOrganisasi = snapshot.getChildrenCount();
+                jumlahOrganisasi.setText(String.valueOf(childOrganisasi));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        database.child("Kepanitiaan").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                long chidKepanitiaan = snapshot.getChildrenCount();
+                jumlahKepanitiaan.setText(String.valueOf(chidKepanitiaan));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        database.child("Prestasi").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                long childPrestasi = snapshot.getChildrenCount();
+                jumlahPrestasi.setText(String.valueOf(childPrestasi));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         showData();
 
@@ -125,6 +171,10 @@ public class ProfilePageFragment extends Fragment {
                 sendData.putExtra("universityperiod", user.getUniversityPeriod());
                 sendData.putExtra("skills", user.getSkills());
                 sendData.putExtra("deskripsi", user.getSelfDescription());
+
+                sendData.putExtra("jumlahorganisasi", jumlahOrganisasi.getText().toString());
+                sendData.putExtra("jumlahkepanitiaan", jumlahKepanitiaan.getText().toString());
+                sendData.putExtra("jumlahprestasi", jumlahPrestasi.getText().toString());
                 startActivity(sendData);
             }
         });
@@ -158,34 +208,6 @@ public class ProfilePageFragment extends Fragment {
                     tvProfileDeskripsi.setText(user.getSelfDescription());
 
                 }
-//                    if (userItems.size() > 0) {
-//                        UserModel user = userItems.get(0);
-//                        if (!user.getUsername().isEmpty()) {
-//                            tvProfileUsername.setText(user.getUsername());
-//                        } else if (!user.getFirstName().isEmpty()) {
-//                            tvProfileFirstName.setText(user.getFirstName());
-//                        } else if (!user.getLastName().isEmpty()) {
-//                            tvProfileLastName.setText(user.getLastName());
-//                        } else if (!user.getPhone().isEmpty()) {
-//                            tvProfilePhone.setText(user.getPhone());
-//                        } else if (!user.getEmail().isEmpty()) {
-//                            tvProfileEmail.setText(user.getEmail());
-//                        } else if (!user.getSeniorHighSchool().isEmpty()) {
-//                            tvProfileSMA.setText(user.getSeniorHighSchool());
-//                        } else if (!user.getSeniorHighSchoolPeriod().isEmpty()) {
-//                            tvProfileSMAPeriod.setText(user.getSeniorHighSchoolPeriod());
-//                        } else if (!user.getUniversity().isEmpty()) {
-//                            tvProfileUniversity.setText(user.getUniversity());
-//                        } else if (!user.getUniversityPeriod().isEmpty()) {
-//                            tvProfileUniversityPeriod.setText(user.getUniversityPeriod());
-//                        } else if (!user.getSkills().isEmpty()) {
-//                            tvProfileSkills.setText(user.getSkills());
-//                        } else if (!user.getSelfDescription().isEmpty()) {
-//                            tvProfileDeskripsi.setText(user.getSelfDescription());
-//                        }
-//
-//                    }
-//                }
             }
 
             @Override

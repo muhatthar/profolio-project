@@ -3,6 +3,7 @@ package com.example.profolio.homepage;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -17,6 +18,11 @@ import android.widget.TextView;
 import com.example.profolio.adapterfragment.SectionPagerAdapter;
 import com.example.profolio.R;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +36,7 @@ public class HomePageFragment extends Fragment {
     TabLayout tabLayout;
     TextView helloUser, slogan;
     LinearLayout containerRecyclerView;
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -84,6 +91,28 @@ public class HomePageFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout);
         helloUser = view.findViewById(R.id.helloUser);
         slogan = view.findViewById(R.id.slogan);
+        helloUser = view.findViewById(R.id.helloUser);
+
+        database.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                        String username = userSnapshot.child("username").getValue(String.class);
+                        if (username != null) {
+                            helloUser.setText("Hello, " + username);
+                            break;  // Assuming there is only one user
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         //setGradientTextView();
 
         containerRecyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
