@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.profolio.R;
 import com.example.profolio.modelfragment.UserModel;
+import com.example.profolio.profile.ProfilePageFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,12 +19,16 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EditProfileActivity extends AppCompatActivity {
 
-    EditText edtProfileUsername, edtProfileFirstName, edtProfileLastName, edtProfilePhone, edtProfileEmail,
-            edtProfileSMA, edtProfileSMAPeriod, edtProfileUniversity, edtProfileUniversityPeriod, edtProfileSkills, edtProfileDeskripsi;
+    EditText edtProfileUsername, edtProfileFirstName, edtProfileLastName, edtProfilePhone, edtProfileEmail, edtProfileSMA, edtProfileSMAPeriod, edtProfileUniversity, edtProfileUniversityPeriod, edtProfileSkills, edtProfileDeskripsi;
 
     AppCompatButton btn_save;
+
+    List<UserModel> userItems;
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
@@ -42,9 +48,37 @@ public class EditProfileActivity extends AppCompatActivity {
         edtProfileUniversityPeriod = findViewById(R.id.edtProfileUniversityPeriod);
         edtProfileSkills = findViewById(R.id.edtProfileSkills);
         edtProfileDeskripsi = findViewById(R.id.edtProfileDeskripsi);
+        btn_save = findViewById(R.id.btnEditProfile);
+
+        Intent getData = getIntent();
+        String username = getData.getStringExtra("username");
+        String firstname = getData.getStringExtra("firstname");
+        String lastname = getData.getStringExtra("lastname");
+        String phone = getData.getStringExtra("phone");
+        String email = getData.getStringExtra("email");
+        String sma = getData.getStringExtra("sma");
+        String smaperiod = getData.getStringExtra("smaperiod");
+        String university = getData.getStringExtra("university");
+        String universityperiod = getData.getStringExtra("universityperiod");
+        String skills = getData.getStringExtra("skills");
+        String deskripsi = getData.getStringExtra("deskripsi");
+
+        edtProfileUsername.setText(username);
+        edtProfileFirstName.setText(firstname);
+        edtProfileLastName.setText(lastname);
+        edtProfilePhone.setText(phone);
+        edtProfileEmail.setText(email);
+        edtProfileSMA.setText(sma);
+        edtProfileSMAPeriod.setText(smaperiod);
+        edtProfileUniversity.setText(university);
+        edtProfileUniversityPeriod.setText(universityperiod);
+        edtProfileSkills.setText(skills);
+        edtProfileDeskripsi.setText(deskripsi);
 
         btn_save.setOnClickListener(v -> {
             saveUserData();
+            Intent backToProfile = new Intent(this, ProfilePageFragment.class);
+            startActivity(backToProfile);
         });
 
 
@@ -52,9 +86,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void saveUserData() {
         // Retrieve the values from EditText fields
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-
         String username = edtProfileUsername.getText().toString();
         String firstName = edtProfileFirstName.getText().toString();
         String lastName = edtProfileLastName.getText().toString();
@@ -67,18 +98,14 @@ public class EditProfileActivity extends AppCompatActivity {
         String skills = edtProfileSkills.getText().toString();
         String selfDescription = edtProfileDeskripsi.getText().toString();
 
-        if (email == "") {
-            String emailAuth = user.getEmail();
-            edtProfileEmail.setText(emailAuth);
-        }
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        String userId = database.getKey();
-
-        database.child("Users").child(userId).setValue(new UserModel(username, firstName, lastName, phone,
-                email, seniorHighSchool, seniorHighSchoolPeriod, university, universityPeriod,skills, selfDescription)).addOnSuccessListener(new OnSuccessListener<Void>() {
+        database.child("Users").child(userId).setValue(new UserModel(username, firstName, lastName, phone, email,
+                seniorHighSchool, seniorHighSchoolPeriod, university,
+                universityPeriod, skills, selfDescription)).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(EditProfileActivity.this, "Update Data Succesfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditProfileActivity.this, "Update Data Successfully", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -87,4 +114,5 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
     }
+
 }

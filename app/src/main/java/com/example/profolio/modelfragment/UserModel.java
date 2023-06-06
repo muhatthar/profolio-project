@@ -14,6 +14,10 @@ public class UserModel {
     private String selfDescription;
     private String key;
 
+    public UserModel() {
+
+    }
+
     public UserModel(String username, String firstName, String lastName, String phone,
                      String email, String seniorHighSchool, String seniorHighSchoolPeriod, String university,
                      String universityPeriod, String skills, String selfDescription) {

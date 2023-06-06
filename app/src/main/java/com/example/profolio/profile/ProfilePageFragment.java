@@ -1,5 +1,6 @@
 package com.example.profolio.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,10 @@ import android.widget.TextView;
 
 import com.example.profolio.R;
 import com.example.profolio.adapterfragment.AdapterOrganisasi;
+import com.example.profolio.edit.EditProfileActivity;
 import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.modelfragment.UserModel;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +44,8 @@ public class ProfilePageFragment extends Fragment {
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     List<UserModel> userItems;
+
+    ExtendedFloatingActionButton btn_edit_profile;
 
     TextView tvProfileUsername, tvProfileFirstName, tvProfileLastName, tvProfilePhone,
     tvProfileEmail, tvProfileSMA, tvProfileSMAPeriod, tvProfileUniversity, tvProfileUniversityPeriod,
@@ -101,7 +106,28 @@ public class ProfilePageFragment extends Fragment {
         tvProfileSkills = view.findViewById(R.id.tvProfileSkills);
         tvProfileDeskripsi = view.findViewById(R.id.tvProfileDeskripsi);
 
+        btn_edit_profile = view.findViewById(R.id.btn_edit_profile);
+
         showData();
+
+        btn_edit_profile.setOnClickListener(v -> {
+            if (userItems.size() > 0) {
+                UserModel user = userItems.get(0);
+                Intent sendData = new Intent(getContext(), EditProfileActivity.class);
+                sendData.putExtra("username", user.getUsername());
+                sendData.putExtra("firstname", user.getFirstName());
+                sendData.putExtra("lastname", user.getLastName());
+                sendData.putExtra("phone", user.getPhone());
+                sendData.putExtra("email", user.getEmail());
+                sendData.putExtra("sma", user.getSeniorHighSchool());
+                sendData.putExtra("smaperiod", user.getSeniorHighSchoolPeriod());
+                sendData.putExtra("university", user.getUniversity());
+                sendData.putExtra("universityperiod", user.getUniversityPeriod());
+                sendData.putExtra("skills", user.getSkills());
+                sendData.putExtra("deskripsi", user.getSelfDescription());
+                startActivity(sendData);
+            }
+        });
 
         return view;
     }
@@ -110,32 +136,56 @@ public class ProfilePageFragment extends Fragment {
         database.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    userItems = new ArrayList<>();
-                    for (DataSnapshot item : snapshot.getChildren()) {
-                        UserModel user = item.getValue(UserModel.class);
-                        user.setKey(item.getKey());
-                        userItems.add(user);
-                    }
-
-                    // Display the retrieved data
-                    if (!userItems.isEmpty()) {
-                        UserModel userData = userItems.get(0);
-                        tvProfileUsername.setText(userData.getUsername());
-                        tvProfileFirstName.setText(userData.getFirstName());
-                        tvProfileLastName.setText(userData.getLastName());
-                        tvProfilePhone.setText(userData.getPhone());
-                        tvProfileEmail.setText(userData.getEmail());
-                        tvProfileSMA.setText(userData.getSeniorHighSchool());
-                        tvProfileSMAPeriod.setText(userData.getSeniorHighSchoolPeriod());
-                        tvProfileUniversity.setText(userData.getUniversity());
-                        tvProfileUniversityPeriod.setText(userData.getUniversityPeriod());
-                        tvProfileSkills.setText(userData.getSkills());
-                        tvProfileDeskripsi.setText(userData.getSelfDescription());
-                    }
-                } else {
-                    // Data does not exist or is empty
+                userItems = new ArrayList<>();
+                for (DataSnapshot item : snapshot.getChildren()) {
+                    UserModel user = item.getValue(UserModel.class);
+                    user.setKey(item.getKey());
+                    userItems.add(user);
                 }
+
+                if (userItems.size() > 0) {
+                    UserModel user = userItems.get(0);
+                    tvProfileUsername.setText(user.getUsername());
+                    tvProfileFirstName.setText(user.getFirstName());
+                    tvProfileLastName.setText(user.getLastName());
+                    tvProfilePhone.setText(user.getPhone());
+                    tvProfileEmail.setText(user.getEmail());
+                    tvProfileSMA.setText(user.getSeniorHighSchool());
+                    tvProfileSMAPeriod.setText(user.getSeniorHighSchoolPeriod());
+                    tvProfileUniversity.setText(user.getUniversity());
+                    tvProfileUniversityPeriod.setText(user.getUniversityPeriod());
+                    tvProfileSkills.setText(user.getSkills());
+                    tvProfileDeskripsi.setText(user.getSelfDescription());
+
+                }
+//                    if (userItems.size() > 0) {
+//                        UserModel user = userItems.get(0);
+//                        if (!user.getUsername().isEmpty()) {
+//                            tvProfileUsername.setText(user.getUsername());
+//                        } else if (!user.getFirstName().isEmpty()) {
+//                            tvProfileFirstName.setText(user.getFirstName());
+//                        } else if (!user.getLastName().isEmpty()) {
+//                            tvProfileLastName.setText(user.getLastName());
+//                        } else if (!user.getPhone().isEmpty()) {
+//                            tvProfilePhone.setText(user.getPhone());
+//                        } else if (!user.getEmail().isEmpty()) {
+//                            tvProfileEmail.setText(user.getEmail());
+//                        } else if (!user.getSeniorHighSchool().isEmpty()) {
+//                            tvProfileSMA.setText(user.getSeniorHighSchool());
+//                        } else if (!user.getSeniorHighSchoolPeriod().isEmpty()) {
+//                            tvProfileSMAPeriod.setText(user.getSeniorHighSchoolPeriod());
+//                        } else if (!user.getUniversity().isEmpty()) {
+//                            tvProfileUniversity.setText(user.getUniversity());
+//                        } else if (!user.getUniversityPeriod().isEmpty()) {
+//                            tvProfileUniversityPeriod.setText(user.getUniversityPeriod());
+//                        } else if (!user.getSkills().isEmpty()) {
+//                            tvProfileSkills.setText(user.getSkills());
+//                        } else if (!user.getSelfDescription().isEmpty()) {
+//                            tvProfileDeskripsi.setText(user.getSelfDescription());
+//                        }
+//
+//                    }
+//                }
             }
 
             @Override

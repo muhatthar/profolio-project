@@ -9,12 +9,12 @@
 
     <View
         android:id="@+id/bckgroundPrf"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="128dp"
-        android:background="@drawable/bg_topbar">
+        android:background="@drawable/bg_topbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </View>
 
@@ -46,25 +46,25 @@
 
     <LinearLayout
         android:id="@+id/statusBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avatarPrf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatarPrf">
 
         <LinearLayout
             android:id="@+id/organisasiPrf"
-            app:layout_constraintEnd_toStartOf="@id/kepanitiaanPrf"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/avatarPrf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="1dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@id/kepanitiaanPrf"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avatarPrf">
 
             <TextView
                 android:id="@+id/jmlhOrgOrg"
@@ -93,17 +93,17 @@
 
         <LinearLayout
             android:id="@+id/kepanitiaanPrf"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/avatarPrf"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:layout_marginVertical="1dp"
             android:layout_marginTop="1dp"
+
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avatarPrf">
 
             <TextView
                 android:id="@+id/jmlhOrgKep"
@@ -133,16 +133,16 @@
 
         <LinearLayout
             android:id="@+id/prestasiPrf"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/kepanitiaanPrf"
-            app:layout_constraintTop_toBottomOf="@+id/avatarPrf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginVertical="1dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/kepanitiaanPrf"
+            app:layout_constraintTop_toBottomOf="@+id/avatarPrf">
 
             <TextView
                 android:id="@+id/jmlhOrgPres"
@@ -204,15 +204,15 @@
                     android:id="@+id/tvProfileUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Username"
+                    android:text="No Data"
                     android:textColor="@color/subcaption"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/subcaption"/>
+                android:background="@color/subcaption" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -239,9 +239,9 @@
                         android:id="@+id/tvProfileFirstName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="First Name"
+                        android:text="No Data"
                         android:textColor="@color/subcaption"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -264,9 +264,9 @@
                         android:id="@+id/tvProfileLastName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Last Name"
+                        android:text="No Data"
                         android:textColor="@color/subcaption"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -275,7 +275,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/subcaption"/>
+                android:background="@color/subcaption" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -295,15 +295,15 @@
                     android:id="@+id/tvProfilePhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+62812-xxx-xxx-xxx"
+                    android:text="No Data"
                     android:textColor="@color/subcaption"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/subcaption"/>
+                android:background="@color/subcaption" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -323,15 +323,15 @@
                     android:id="@+id/tvProfileEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="alexanderPandjaitan@gmail.com"
+                    android:text="No Data"
                     android:textColor="@color/subcaption"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/subcaption"/>
+                android:background="@color/subcaption" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -358,7 +358,7 @@
                         android:id="@+id/tvProfileSMA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Senior High School"
+                        android:text="No Data"
                         android:textColor="@color/subcaption"
                         android:textSize="16sp" />
 
@@ -386,9 +386,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:text="Period"
+                        android:text="No Data"
                         android:textColor="@color/subcaption"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -397,7 +397,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/subcaption"/>
+                android:background="@color/subcaption" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -424,9 +424,9 @@
                         android:id="@+id/tvProfileUniversity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="University"
+                        android:text="No Data"
                         android:textColor="@color/subcaption"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -441,9 +441,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="end"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Period"
-                        android:layout_gravity="end"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -451,10 +451,10 @@
                         android:id="@+id/tvProfileUniversityPeriod"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Period"
                         android:layout_gravity="end"
+                        android:text="No Data"
                         android:textColor="@color/subcaption"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -463,7 +463,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/subcaption"/>
+                android:background="@color/subcaption" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -483,15 +483,15 @@
                     android:id="@+id/tvProfileSkills"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="University"
+                    android:text="No Data"
                     android:textColor="@color/subcaption"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/subcaption"/>
+                android:background="@color/subcaption" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -511,9 +511,9 @@
                     android:id="@+id/tvProfileDeskripsi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description"
+                    android:text="No Data"
                     android:textColor="@color/subcaption"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <View
@@ -527,5 +527,18 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_edit_profile"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="120dp"
+        android:layout_marginStart="300dp"
+        android:elevation="4dp"
+        android:foreground="@drawable/ic_floating_button_edit_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,7 +65,7 @@ public class HomePageActivity extends AppCompatActivity {
         linearLayout = findViewById(R.id.navbarLayout);
 
         btn_add = findViewById(R.id.btn_add);
-        btn_edit_profile = findViewById(R.id.btn_edit_profile);
+//        btn_edit_profile = findViewById(R.id.btn_edit_profile);
         btn_add_organisasi = findViewById(R.id.btn_add_organisasi);
         btn_add_kepanitiaan = findViewById(R.id.btn_add_kepanitiaan);
         btn_add_prestasi = findViewById(R.id.btn_add_prestasi);
@@ -138,7 +138,7 @@ public class HomePageActivity extends AppCompatActivity {
 //                profileText.setVisibility(View.GONE);
 
                 btn_add.setVisibility(View.VISIBLE);
-                btn_edit_profile.setVisibility(View.GONE);
+//                btn_edit_profile.setVisibility(View.GONE);
 
                 documentImage.setImageResource(R.drawable.ic_document);
                 profileImage.setImageResource(R.drawable.ic_profile);
@@ -170,7 +170,7 @@ public class HomePageActivity extends AppCompatActivity {
 //                profileText.setVisibility(View.GONE);
 
                 btn_add.setVisibility(View.GONE);
-                btn_edit_profile.setVisibility(View.GONE);
+//                btn_edit_profile.setVisibility(View.GONE);
 
                 homeImage.setImageResource(R.drawable.ic_homepage);
                 profileImage.setImageResource(R.drawable.ic_profile);
@@ -202,14 +202,14 @@ public class HomePageActivity extends AppCompatActivity {
 //                documentText.setVisibility(View.GONE);
 
                 btn_add.setVisibility(View.GONE);
-                btn_edit_profile.setVisibility(View.VISIBLE);
-                btn_edit_profile.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent editProfile = new Intent(HomePageActivity.this, EditProfileActivity.class);
-                        startActivity(editProfile);
-                    }
-                });
+//                btn_edit_profile.setVisibility(View.VISIBLE);
+//                btn_edit_profile.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Intent editProfile = new Intent(HomePageActivity.this, EditProfileActivity.class);
+//                        startActivity(editProfile);
+//                    }
+//                });
 
                 homeImage.setImageResource(R.drawable.ic_homepage);
                 documentImage.setImageResource(R.drawable.ic_document);
