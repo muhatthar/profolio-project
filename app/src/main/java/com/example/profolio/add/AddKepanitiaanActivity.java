@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class AddKepanitiaanActivity extends AppCompatActivity {
+public class  AddKepanitiaanActivity extends AppCompatActivity {
     EditText edtNamaKepanitiaan, edtDeskripsiKepanitiaan, edtJabatanKepanitiaan, edtTahunKepanitiaan;
     AppCompatButton btnAddKepanitiaan;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
