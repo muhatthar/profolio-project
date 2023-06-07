@@ -83,66 +83,6 @@ public class EditOrganisasiActivity extends AppCompatActivity {
         });
 
         btnEditOrganisasi = findViewById(R.id.btnEditOrganisasi);
-
-
-
-//        btnEditOrganisasi.setOnClickListener(v -> {
-//            String getNamaOrganisasi = edtNamaOrganisasi2.getText().toString();
-//            String getDeskripsiOrganisasi = edtDeskripsiOrganisasi2.getText().toString();
-//            String getJabatanOrganisasi = edtJabatanOrganisasi2.getText().toString();
-//            String getTahunMulaiOrganisasi = edtTahunMulaiOrganisasi2.getText().toString();
-//            String getTahunSelesaiOrganisasi = edtTahunSelesaiOrganisasi2.getText().toString();
-//
-//            if (getNamaOrganisasi.isEmpty()) {
-//                edtNamaOrganisasi2.setError("Entry Organisasi Name");
-//            } else if (getDeskripsiOrganisasi.isEmpty()) {
-//                edtDeskripsiOrganisasi2.setError("Entry Organisasi Description");
-//            } else if (getJabatanOrganisasi.isEmpty()) {
-//                edtJabatanOrganisasi2.setError("Entry Jabatan Status");
-//            } else if (getTahunMulaiOrganisasi.isEmpty()) {
-//                edtTahunMulaiOrganisasi2.setError("Entry Tahun Mulai");
-//            } else if (getTahunSelesaiOrganisasi.isEmpty()) {
-//                edtTahunSelesaiOrganisasi2.setError("Entry Tahun Selesai");
-//            } else  {
-//                Dialog popUp = new Dialog(EditOrganisasiActivity.this);
-//                popUp.setContentView(R.layout.popup1_edit);
-//                Window window = popUp.getWindow();
-//                WindowManager.LayoutParams layoutParams = window.getAttributes();
-//                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-//
-//                AppCompatButton confirm = popUp.findViewById(R.id.btnEditConfirm);
-//                AppCompatButton cancel = popUp.findViewById(R.id.btnEditCancel);
-//
-//                cancel.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        popUp.dismiss();
-//                    }
-//                });
-//
-//                confirm.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        database.child("Organisasi").child(key).setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
-//                                getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void unused) {
-//                                Toast.makeText(EditOrganisasiActivity.this, "Update Data Succesfully", Toast.LENGTH_SHORT).show();
-//                                Intent back = new Intent(EditOrganisasiActivity.this, HomePageActivity.class);
-//                                startActivity(back);
-//                            }
-//                        }).addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Toast.makeText(EditOrganisasiActivity.this, "Update Data Failed", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//                        popUp.dismiss();
-//                    }
-//                });
-//                popUp.show();
-//            }
-//        });
     }
 
     @Override
@@ -203,9 +143,9 @@ public class EditOrganisasiActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         String getSertifOrganisasi = task.getResult().toString();
-                                        String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                        database.child("Users").child(userKey).child("Organisasi").child(key).setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
+                                        database.child("Users").child(userId).child("Organisasi").child(key).setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
                                                 getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

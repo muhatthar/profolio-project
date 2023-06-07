@@ -91,8 +91,8 @@ public class AdapterPrestasi extends RecyclerView.Adapter<AdapterPrestasi.Presta
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    database.child("Users").child(userKey).child("Prestasi").child(prestasiData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    database.child("Users").child(userId).child("Prestasi").child(prestasiData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(context, "Delete data succesfully", Toast.LENGTH_SHORT).show();

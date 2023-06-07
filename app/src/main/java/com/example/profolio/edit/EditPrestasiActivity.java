@@ -133,9 +133,9 @@ public class EditPrestasiActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         String getSertifikatPrestasi = task.getResult().toString();
-                                        String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                        database.child("Users").child(userKey).child("Prestasi").child(key).setValue(new PrestasiModel(getNamaPrestasi, getJabatanPrestasi,
+                                        database.child("Users").child(userId).child("Prestasi").child(key).setValue(new PrestasiModel(getNamaPrestasi, getJabatanPrestasi,
                                                 getDeskripsiPrestasi, getTahunPrestasi, getSertifikatPrestasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

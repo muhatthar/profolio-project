@@ -142,9 +142,9 @@ public class AddOrganisasiActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Uri> task) {
                                 String getSertifOrganisasi = task.getResult().toString();
 
-                                String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                database.child("Users").child(userKey).child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
+                                database.child("Users").child(userId).child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
                                         getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {

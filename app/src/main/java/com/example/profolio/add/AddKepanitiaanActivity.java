@@ -95,8 +95,8 @@ public class AddKepanitiaanActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Uri> task) {
                                 String getSertifOrganisasi = task.getResult().toString();
 
-                                String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                database.child("Users").child(userKey).child("Kepanitiaan").push().setValue(new KepanitiaanModel(getNamaKepanitiaan, getJabatanKepanitiaan, getDeskripsiKepanitiaan, getTahunKepanitiaan, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                database.child("Users").child(userId).child("Kepanitiaan").push().setValue(new KepanitiaanModel(getNamaKepanitiaan, getJabatanKepanitiaan, getDeskripsiKepanitiaan, getTahunKepanitiaan, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         startActivity(new Intent(AddKepanitiaanActivity.this, HomePageActivity.class));

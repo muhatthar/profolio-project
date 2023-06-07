@@ -92,8 +92,8 @@ public class KepanitiaanFragment extends Fragment {
         return kepanitiaanView;
     }
     private void showData() {
-        String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database.child("Users").child(userKey).child("Kepanitiaan").addValueEventListener(new ValueEventListener() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.child("Users").child(userId).child("Kepanitiaan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 kepanitiaanItems = new ArrayList<>();

@@ -132,9 +132,9 @@ public class EditKepanitiaanActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         String getSertifKepanitiaan = task.getResult().toString();
-                                        String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                        database.child("Users").child(userKey).child("Kepanitiaan").child(key).setValue(new KepanitiaanModel(getNamaKepanitiaan, getJabatanKepanitiaan,
+                                        database.child("Users").child(userId).child("Kepanitiaan").child(key).setValue(new KepanitiaanModel(getNamaKepanitiaan, getJabatanKepanitiaan,
                                                 getDeskripsiKepanitiaan, getTahunKepanitiaan, getSertifKepanitiaan)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

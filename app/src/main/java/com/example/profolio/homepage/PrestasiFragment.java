@@ -91,8 +91,8 @@ public class PrestasiFragment extends Fragment {
         return prestasiView;
     }
     private void showData() {
-        String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database.child("Users").child(userKey).child("Prestasi").addValueEventListener(new ValueEventListener() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.child("Users").child(userId).child("Prestasi").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 prestasiItems = new ArrayList<>();
