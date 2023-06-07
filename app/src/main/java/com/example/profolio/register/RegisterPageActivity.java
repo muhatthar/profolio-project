@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.profolio.R;
 import com.example.profolio.login.LoginPageActivity;
 import com.example.profolio.modelfragment.UserModel;
+import com.example.profolio.userdata.UserDataActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -86,7 +87,8 @@ public class RegisterPageActivity extends AppCompatActivity {
 
     public void updateUI(FirebaseUser user){
         if (user != null){
-            Intent loginNext = new Intent(RegisterPageActivity.this, LoginPageActivity.class);
+//            Intent loginNext = new Intent(RegisterPageActivity.this, LoginPageActivity.class);
+            Intent loginNext = new Intent(RegisterPageActivity.this, UserDataActivity.class);
             startActivity(loginNext);
         } else {
             Toast.makeText(RegisterPageActivity.this, "Sign Up First", Toast.LENGTH_SHORT).show();

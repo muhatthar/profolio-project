@@ -39,7 +39,7 @@
             android:fontFamily="@font/poppins_bold"
             android:paddingHorizontal="55dp"
             android:paddingVertical="7dp"
-            android:text="Tambah Organisasi"
+            android:text="Edit Organisasi"
             android:textColor="@color/white"
             android:textSize="15sp" />
     </LinearLayout>
@@ -248,7 +248,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_back"
                 android:fontFamily="@font/poppins_semibold"
-                android:hint="Add"
+                android:hint="Save Changes"
                 android:textColorHint="@color/white"
                 android:textSize="20sp" />
 

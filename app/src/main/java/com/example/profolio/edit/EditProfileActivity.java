@@ -110,9 +110,7 @@ public class EditProfileActivity extends AppCompatActivity {
         String skills = edtProfileSkills.getText().toString();
         String selfDescription = edtProfileDeskripsi.getText().toString();
 
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        database.child("Users").child(userId).setValue(new UserModel(username, firstName, lastName, phone, email,
+        database.child("Users").child("UserData").setValue(new UserModel(username, firstName, lastName, phone, email,
                 seniorHighSchool, seniorHighSchoolPeriod, university,
                 universityPeriod, skills, selfDescription)).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

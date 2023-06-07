@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -202,8 +203,9 @@ public class EditOrganisasiActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         String getSertifOrganisasi = task.getResult().toString();
+                                        String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                        database.child("Organisasi").child(key).setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
+                                        database.child("Users").child(userKey).child("Organisasi").child(key).setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
                                                 getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

@@ -21,6 +21,7 @@ import com.example.profolio.edit.EditPrestasiActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -90,7 +91,8 @@ public class AdapterPrestasi extends RecyclerView.Adapter<AdapterPrestasi.Presta
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    database.child("Prestasi").child(prestasiData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    database.child("Users").child(userKey).child("Prestasi").child(prestasiData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(context, "Delete data succesfully", Toast.LENGTH_SHORT).show();
