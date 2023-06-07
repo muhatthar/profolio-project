@@ -1,11 +1,14 @@
 package com.example.profolio.profile;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -164,7 +167,8 @@ public class ProfilePageFragment extends Fragment {
         btn_edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                database.child("Users").child("UserData").addListenerForSingleValueEvent(new ValueEventListener() {
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                database.child("Users").child(userId).child("UserData").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
@@ -206,7 +210,8 @@ public class ProfilePageFragment extends Fragment {
     }
 
     private void showData() {
-        database.child("Users").child("UserData").addValueEventListener(new ValueEventListener() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.child("Users").child(userId).child("UserData").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -234,5 +239,6 @@ public class ProfilePageFragment extends Fragment {
                 // Handle the error
             }
         });
+
     }
 }

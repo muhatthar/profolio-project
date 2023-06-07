@@ -70,8 +70,9 @@ public class UserDataActivity extends AppCompatActivity {
         String skills = edtUserDataSkills.getText().toString();
         String selfDescription = edtUserDataDeskripsi.getText().toString();
 
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        database.child("Users").child("UserData").push().setValue(new UserModel(username, firstName, lastName,
+        database.child("Users").child(userId).child("UserData").push().setValue(new UserModel(username, firstName, lastName,
                 phone, email, sma, smaPeriod, university, universityPeriod,
                 skills, selfDescription)).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

@@ -94,8 +94,8 @@ public class HomePageFragment extends Fragment {
         slogan = view.findViewById(R.id.slogan);
         helloUser = view.findViewById(R.id.helloUser);
 
-        String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database.child("Users").child(userKey).addListenerForSingleValueEvent(new ValueEventListener() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
