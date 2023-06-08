@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.example.profolio.R;
 import com.example.profolio.login.LoginPageActivity;
 import com.example.profolio.modelfragment.UserModel;
-import com.example.profolio.profile.ProfilePageFragment;
+import com.example.profolio.userdata.UserDataActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -31,7 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterPageActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
     private TextView signIn;
-    private EditText etEmail, etPassword, etConfPassword, etUsername;
+    private EditText etEmail, etPassword, etConfPassword;
     private Button btnRegister;
     private FirebaseAuth mAuth;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
@@ -47,7 +47,6 @@ public class RegisterPageActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         etConfPassword = findViewById(R.id.et_confirmPassword);
-        etUsername = findViewById(R.id.et_username);
 
         mAuth = FirebaseAuth.getInstance();
         linearLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -88,7 +87,8 @@ public class RegisterPageActivity extends AppCompatActivity {
 
     public void updateUI(FirebaseUser user){
         if (user != null){
-            Intent loginNext = new Intent(RegisterPageActivity.this, LoginPageActivity.class);
+//            Intent loginNext = new Intent(RegisterPageActivity.this, LoginPageActivity.class);
+            Intent loginNext = new Intent(RegisterPageActivity.this, UserDataActivity.class);
             startActivity(loginNext);
         } else {
             Toast.makeText(RegisterPageActivity.this, "Sign Up First", Toast.LENGTH_SHORT).show();
@@ -123,20 +123,10 @@ public class RegisterPageActivity extends AppCompatActivity {
             return;
         }
 
-        String getUsername = etUsername.getText().toString();
-        String getEmail = etEmail.getText().toString();
-
-        Intent sendData = new Intent(this, ProfilePageFragment.class);
-
-
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        database.child("Users").push().setValue(new UserModel(getUsername, "", "", "", getEmail, "", "",
-                                "", "", "", ""));
-
                         if (task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);

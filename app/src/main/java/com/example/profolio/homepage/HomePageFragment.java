@@ -94,10 +94,8 @@ public class HomePageFragment extends Fragment {
         slogan = view.findViewById(R.id.slogan);
         helloUser = view.findViewById(R.id.helloUser);
 
-//        String keyUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference userKey = FirebaseDatabase.getInstance().getReference().child("Users");
-
-        userKey.addValueEventListener(new ValueEventListener() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -105,10 +103,11 @@ public class HomePageFragment extends Fragment {
                         String username = userSnapshot.child("username").getValue(String.class);
                         if (username != null) {
                             helloUser.setText("Hello, " + username);
-                            break;  // Assuming there is only one user
+                            break;
                         }
                     }
                 }
+
             }
 
             @Override
@@ -116,7 +115,6 @@ public class HomePageFragment extends Fragment {
 
             }
         });
-        //setGradientTextView();
 
         containerRecyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override

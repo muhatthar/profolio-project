@@ -1,11 +1,14 @@
 package com.example.profolio.profile;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +18,13 @@ import com.example.profolio.R;
 import com.example.profolio.adapterfragment.AdapterKepanitiaan;
 import com.example.profolio.adapterfragment.AdapterOrganisasi;
 import com.example.profolio.adapterfragment.AdapterPrestasi;
-import com.example.profolio.edit.EditOrganisasiActivity;
 import com.example.profolio.edit.EditProfileActivity;
-import com.example.profolio.login.LoginPageActivity;
 import com.example.profolio.modelfragment.KepanitiaanModel;
 import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.modelfragment.PrestasiModel;
 import com.example.profolio.modelfragment.UserModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -49,7 +52,6 @@ public class ProfilePageFragment extends Fragment {
     // TODO: Rename and change types of parameters
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-    FirebaseAuth mAuth;
 
     List<UserModel> userItems;
 
@@ -57,8 +59,6 @@ public class ProfilePageFragment extends Fragment {
     TextView tvProfileUsername, tvProfileFirstName, tvProfileLastName, tvProfilePhone,
     tvProfileEmail, tvProfileSMA, tvProfileSMAPeriod, tvProfileUniversity, tvProfileUniversityPeriod,
             tvProfileSkills, tvProfileDeskripsi;
-
-    TextView btnLogout;
 
     TextView jumlahOrganisasi, jumlahKepanitiaan, jumlahPrestasi;
 
@@ -122,14 +122,8 @@ public class ProfilePageFragment extends Fragment {
         jumlahPrestasi = view.findViewById(R.id.jmlhPrestasi);
 
         btn_edit_profile = view.findViewById(R.id.btn_edit_profile);
-        btnLogout = view.findViewById(R.id.btn_logout);
 
         String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        btnLogout.setOnClickListener(v -> {
-//            logOut();
-        });
-
 
         database.child("Users").child(userKey).child("Organisasi").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -170,73 +164,80 @@ public class ProfilePageFragment extends Fragment {
 
         showData();
 
-        btn_edit_profile.setOnClickListener(v -> {
-            if (userItems.size() > 0) {
-                UserModel user = userItems.get(0);
-                Intent sendData = new Intent(getContext(), EditProfileActivity.class);
-                sendData.putExtra("username", user.getUsername());
-                sendData.putExtra("firstname", user.getFirstName());
-                sendData.putExtra("lastname", user.getLastName());
-                sendData.putExtra("phone", user.getPhone());
-                sendData.putExtra("email", user.getEmail());
-                sendData.putExtra("sma", user.getSeniorHighSchool());
-                sendData.putExtra("smaperiod", user.getSeniorHighSchoolPeriod());
-                sendData.putExtra("university", user.getUniversity());
-                sendData.putExtra("universityperiod", user.getUniversityPeriod());
-                sendData.putExtra("skills", user.getSkills());
-                sendData.putExtra("deskripsi", user.getSelfDescription());
-                sendData.putExtra("jumlahorganisasi", jumlahOrganisasi.getText().toString());
-                sendData.putExtra("jumlahkepanitiaan", jumlahKepanitiaan.getText().toString());
-                sendData.putExtra("jumlahprestasi", jumlahPrestasi.getText().toString());
-                startActivity(sendData);
-//            } else if (userItems.size() == 0){
-//                Intent addUser = new Intent(getContext(), EditOrganisasiActivity.class);
-//
+        btn_edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                database.child("Users").child(userId).child("UserData").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            UserModel user = snapshot.getValue(UserModel.class);
+                            if (user != null) {
+                                user.setKey(snapshot.getKey());
+
+                                Intent sendData = new Intent(getContext(), EditProfileActivity.class);
+
+                                sendData.putExtra("username", user.getUsername());
+                                sendData.putExtra("firstname", user.getFirstName());
+                                sendData.putExtra("lastname", user.getLastName());
+                                sendData.putExtra("phone", user.getPhone());
+                                sendData.putExtra("email", user.getEmail());
+                                sendData.putExtra("sma", user.getSeniorHighSchool());
+                                sendData.putExtra("smaperiod", user.getSeniorHighSchoolPeriod());
+                                sendData.putExtra("university", user.getUniversity());
+                                sendData.putExtra("universityperiod", user.getUniversityPeriod());
+                                sendData.putExtra("skills", user.getSkills());
+                                sendData.putExtra("deskripsi", user.getSelfDescription());
+                                sendData.putExtra("jumlahorganisasi", jumlahOrganisasi.getText().toString());
+                                sendData.putExtra("jumlahkepanitiaan", jumlahKepanitiaan.getText().toString());
+                                sendData.putExtra("jumlahprestasi", jumlahPrestasi.getText().toString());
+
+                                startActivity(sendData);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
             }
         });
 
         return view;
     }
 
-//    public void logOut(){
-//        mAuth.signOut();
-//        Intent intent = new Intent(getContext(), LoginPageActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        startActivity(intent);
-//    }
-
     private void showData() {
-        database.child("Users").addValueEventListener(new ValueEventListener() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.child("Users").child(userId).child("UserData").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userItems = new ArrayList<>();
-                for (DataSnapshot item : snapshot.getChildren()) {
-                    UserModel user = item.getValue(UserModel.class);
-                    user.setKey(item.getKey());
-                    userItems.add(user);
-                }
-
-                if (userItems.size() > 0) {
-                    UserModel user = userItems.get(0);
-                    tvProfileUsername.setText(user.getUsername());
-                    tvProfileFirstName.setText(user.getFirstName());
-                    tvProfileLastName.setText(user.getLastName());
-                    tvProfilePhone.setText(user.getPhone());
-                    tvProfileEmail.setText(user.getEmail());
-                    tvProfileSMA.setText(user.getSeniorHighSchool());
-                    tvProfileSMAPeriod.setText(user.getSeniorHighSchoolPeriod());
-                    tvProfileUniversity.setText(user.getUniversity());
-                    tvProfileUniversityPeriod.setText(user.getUniversityPeriod());
-                    tvProfileSkills.setText(user.getSkills());
-                    tvProfileDeskripsi.setText(user.getSelfDescription());
-
+                if (snapshot.exists()) {
+                    UserModel user = snapshot.getValue(UserModel.class);
+                    if (user != null) {
+                        user.setKey(snapshot.getKey());
+                        // Update your UI with the retrieved user data
+                        tvProfileUsername.setText(user.getUsername());
+                        tvProfileFirstName.setText(user.getFirstName());
+                        tvProfileLastName.setText(user.getLastName());
+                        tvProfilePhone.setText(user.getPhone());
+                        tvProfileEmail.setText(user.getEmail());
+                        tvProfileSMA.setText(user.getSeniorHighSchool());
+                        tvProfileSMAPeriod.setText(user.getSeniorHighSchoolPeriod());
+                        tvProfileUniversity.setText(user.getUniversity());
+                        tvProfileUniversityPeriod.setText(user.getUniversityPeriod());
+                        tvProfileSkills.setText(user.getSkills());
+                        tvProfileDeskripsi.setText(user.getSelfDescription());
+                    }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Handle the error
             }
         });
+
     }
 }

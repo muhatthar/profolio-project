@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.example.profolio.adapterfragment.AdapterPrestasi;
 import com.example.profolio.modelfragment.PrestasiModel;
 import com.example.profolio.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -90,7 +91,8 @@ public class PrestasiFragment extends Fragment {
         return prestasiView;
     }
     private void showData() {
-        database.child("Users").child("Prestasi").addValueEventListener(new ValueEventListener() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.child("Users").child(userId).child("Prestasi").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 prestasiItems = new ArrayList<>();

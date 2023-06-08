@@ -91,8 +91,8 @@ public class OrganisasiFragment extends Fragment {
     }
 
     private void showData() {
-        String keyUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database.child("Users").child(keyUser).child("Organisasi").addValueEventListener(new ValueEventListener() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.child("Users").child(userId).child("Organisasi").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 organisasiItems = new ArrayList<>();

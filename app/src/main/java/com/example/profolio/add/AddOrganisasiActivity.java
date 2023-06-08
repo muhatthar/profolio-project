@@ -31,13 +31,13 @@ import java.util.Date;
 import java.util.Locale;
 
 public class AddOrganisasiActivity extends AppCompatActivity {
+    private static final int galleryCode = 1;
     EditText edtNamaOrganisasi, edtDeskripsiOrganisasi, edtJabatanOrganisasi, edtTahunMulaiOrganisasi, edtTahunSelesaiOrganisasi;
     AppCompatButton btnAddOrganisasi, btnUploadSertif;
     ImageView ivOrganisasi;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     Uri imageUri = null;
     FirebaseStorage mStorage;
-    private static final int galleryCode = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class AddOrganisasiActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == galleryCode && resultCode == RESULT_OK){
+        if (requestCode == galleryCode && resultCode == RESULT_OK) {
             imageUri = data.getData();
             ivOrganisasi.setImageURI(imageUri);
         }
@@ -98,10 +98,10 @@ public class AddOrganisasiActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
                                 String getSertifOrganisasi = task.getResult().toString();
-                                String keyUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                database.child("Users").child(keyUser).child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi,
-                                        getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                                database.child("Users").child(userId).child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi, getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         startActivity(new Intent(AddOrganisasiActivity.this, HomePageActivity.class));
@@ -120,4 +120,5 @@ public class AddOrganisasiActivity extends AppCompatActivity {
             }
         });
     }
+
 }

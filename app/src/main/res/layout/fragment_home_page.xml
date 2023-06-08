@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:elevation="8dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Hello, Alexander"
+                android:text="Hello, Proteam"
                 android:textAlignment="textEnd"
                 android:textColor="@color/white"
                 android:textSize="28sp" />

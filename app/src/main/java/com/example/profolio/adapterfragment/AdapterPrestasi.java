@@ -21,6 +21,7 @@ import com.example.profolio.edit.EditPrestasiActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -55,7 +56,7 @@ public class AdapterPrestasi extends RecyclerView.Adapter<AdapterPrestasi.Presta
         holder.itemView.animate()
                 .alpha(1f)
                 .setDuration(300)
-                .setStartDelay(300 * position)  // Add a delay to stagger the animations
+                .setStartDelay(300 * position)
                 .start();
 
         holder.btn_edit_prestasi.setOnClickListener(v -> {
@@ -90,14 +91,14 @@ public class AdapterPrestasi extends RecyclerView.Adapter<AdapterPrestasi.Presta
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    database.child("Users").child("Prestasi").child(prestasiData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    database.child("Users").child(userId).child("Prestasi").child(prestasiData.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(context, "Delete data succesfully", Toast.LENGTH_SHORT).show();
                             prestasiItems.remove(position);
                             notifyItemRemoved(position);
                             notifyItemRangeChanged(position, getItemCount());
-                            //notifyDataSetChanged();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
