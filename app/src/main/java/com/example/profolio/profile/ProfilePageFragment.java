@@ -175,7 +175,7 @@ public class ProfilePageFragment extends Fragment {
                             UserModel user = snapshot.getValue(UserModel.class);
                             if (user != null) {
                                 user.setKey(snapshot.getKey());
-                                // Create an intent to start the second activity
+
                                 Intent sendData = new Intent(getContext(), EditProfileActivity.class);
 
                                 sendData.putExtra("username", user.getUsername());
@@ -200,7 +200,6 @@ public class ProfilePageFragment extends Fragment {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        // Handle the error
                     }
                 });
             }

@@ -57,7 +57,7 @@ public class AdapterKepanitiaan extends RecyclerView.Adapter<AdapterKepanitiaan.
         holder.itemView.animate()
                 .alpha(1f)
                 .setDuration(300)
-                .setStartDelay(300 * position)  // Add a delay to stagger the animations
+                .setStartDelay(300 * position)
                 .start();
 
         holder.btn_edit_kepanitiaan.setOnClickListener(v -> {
@@ -100,7 +100,6 @@ public class AdapterKepanitiaan extends RecyclerView.Adapter<AdapterKepanitiaan.
                             kepanitiaanItems.remove(position);
                             notifyItemRemoved(position);
                             notifyItemRangeChanged(position, getItemCount());
-                            //notifyDataSetChanged();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

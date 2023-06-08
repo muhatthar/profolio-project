@@ -49,20 +49,19 @@ public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.Or
 
     @Override
     public void onBindViewHolder(@NonNull AdapterOrganisasi.OrganisasiViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        //Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         OrganisasiModel organisasiData = organisasiItems.get(position);
 
         holder.tvTitleOrganisasi.setText(organisasiData.getNamaOrganisasi());
         holder.tvJabatanOrganisas.setText(organisasiData.getJabatanOrganisasi());
         holder.tvDeskripsiOrganisasi.setText(organisasiData.getDeskripsiOrganisasi());
         holder.tvPeriodeOrganisasi.setText(organisasiData.getTahunMulaiOrganisasi() + " - " + organisasiData.getTahunSelesaiOrganisasi());
-        //holder.itemView.startAnimation(animation);
+
 
         holder.itemView.setAlpha(0f);
         holder.itemView.animate()
                 .alpha(1f)
                 .setDuration(300)
-                .setStartDelay(300 * position)  // Add a delay to stagger the animations
+                .setStartDelay(300 * position)
                 .start();
 
         holder.btn_edit_organisasi.setOnClickListener(v -> {
@@ -105,7 +104,6 @@ public class AdapterOrganisasi extends RecyclerView.Adapter<AdapterOrganisasi.Or
                             organisasiItems.remove(position);
                             notifyItemRemoved(position);
                             notifyItemRangeChanged(position, getItemCount());
-                            //notifyDataSetChanged();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

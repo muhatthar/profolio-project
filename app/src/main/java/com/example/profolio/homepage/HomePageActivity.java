@@ -72,7 +72,6 @@ public class HomePageActivity extends AppCompatActivity {
         linearLayout = findViewById(R.id.navbarLayout);
 
         btn_add = findViewById(R.id.btn_add);
-//        btn_edit_profile = findViewById(R.id.btn_edit_profile);
         btn_add_organisasi = findViewById(R.id.btn_add_organisasi);
         btn_add_kepanitiaan = findViewById(R.id.btn_add_kepanitiaan);
         btn_add_prestasi = findViewById(R.id.btn_add_prestasi);
@@ -137,15 +136,10 @@ public class HomePageActivity extends AppCompatActivity {
             startActivity(addPrestasi);
         });
 
-//        replaceFragment(new OrganisasiFragment());
-
         homeLayout.setOnClickListener(v -> {
             if (selectedtab != 1) {
-//                documentText.setVisibility(View.GONE);
-//                profileText.setVisibility(View.GONE);
 
                 btn_add.setVisibility(View.VISIBLE);
-//                btn_edit_profile.setVisibility(View.GONE);
 
                 documentImage.setImageResource(R.drawable.ic_document);
                 profileImage.setImageResource(R.drawable.ic_profile);
@@ -250,7 +244,6 @@ public class HomePageActivity extends AppCompatActivity {
     private void animateFAB(boolean show) {
         if (show) {
             if (isAllFABVisible) {
-                // Animation is already in progress, no need to start a new animation
                 return;
             }
 
@@ -262,7 +255,6 @@ public class HomePageActivity extends AppCompatActivity {
             btn_add_prestasi.setScaleX(0f);
             btn_add_prestasi.setScaleY(0f);
 
-            // Show the FABs and labels
             btn_add_organisasi.setVisibility(View.VISIBLE);
             btn_add_kepanitiaan.setVisibility(View.VISIBLE);
             btn_add_prestasi.setVisibility(View.VISIBLE);
@@ -274,14 +266,12 @@ public class HomePageActivity extends AppCompatActivity {
             btn_add.extend();
             isAllFABVisible = true;
 
-            // Animation for the first FAB
             btn_add_organisasi.animate()
                     .scaleX(1f)
                     .scaleY(1f)
                     .setDuration(200)
                     .start();
 
-            // Delay and animation for the second FAB
             btn_add_kepanitiaan.animate()
                     .scaleX(1f)
                     .scaleY(1f)
@@ -289,7 +279,6 @@ public class HomePageActivity extends AppCompatActivity {
                     .setDuration(200)
                     .start();
 
-            // Delay and animation for the third FAB
             btn_add_prestasi.animate()
                     .scaleX(1f)
                     .scaleY(1f)
@@ -298,7 +287,6 @@ public class HomePageActivity extends AppCompatActivity {
                     .start();
         } else {
             if (!isAllFABVisible) {
-                // Animation is not in progress, no need to cancel anything
                 return;
             }
 

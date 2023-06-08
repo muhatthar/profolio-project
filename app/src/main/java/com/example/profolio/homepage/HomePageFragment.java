@@ -103,7 +103,7 @@ public class HomePageFragment extends Fragment {
                         String username = userSnapshot.child("username").getValue(String.class);
                         if (username != null) {
                             helloUser.setText("Hello, " + username);
-                            break;  // Assuming there is only one user
+                            break;
                         }
                     }
                 }
