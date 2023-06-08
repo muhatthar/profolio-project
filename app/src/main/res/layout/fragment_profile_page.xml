@@ -18,6 +18,24 @@
 
     </View>
 
+
+    <TextView
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Log out"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/card_bg_all_corners_10"
+        android:paddingVertical="1dp"
+        android:textSize="12sp"
+        android:paddingHorizontal="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <LinearLayout
         android:id="@+id/avatarPrf"
         android:layout_width="match_parent"
@@ -36,10 +54,12 @@
             android:background="@drawable/ic_circle_white"
             android:gravity="center">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivFotoProfile"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
-                android:src="@drawable/ic_avatar_profile" />
+                android:src="@drawable/ic_avatar_profile"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
         </LinearLayout>
 
     </LinearLayout>

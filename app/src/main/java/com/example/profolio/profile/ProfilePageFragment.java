@@ -3,6 +3,7 @@ package com.example.profolio.profile;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.profolio.R;
@@ -19,6 +21,7 @@ import com.example.profolio.adapterfragment.AdapterKepanitiaan;
 import com.example.profolio.adapterfragment.AdapterOrganisasi;
 import com.example.profolio.adapterfragment.AdapterPrestasi;
 import com.example.profolio.edit.EditProfileActivity;
+import com.example.profolio.login.LoginPageActivity;
 import com.example.profolio.modelfragment.KepanitiaanModel;
 import com.example.profolio.modelfragment.OrganisasiModel;
 import com.example.profolio.modelfragment.PrestasiModel;
@@ -26,12 +29,16 @@ import com.example.profolio.modelfragment.UserModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.ktx.Firebase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,9 +67,11 @@ public class ProfilePageFragment extends Fragment {
     tvProfileEmail, tvProfileSMA, tvProfileSMAPeriod, tvProfileUniversity, tvProfileUniversityPeriod,
             tvProfileSkills, tvProfileDeskripsi;
 
-    TextView jumlahOrganisasi, jumlahKepanitiaan, jumlahPrestasi;
-
-
+    TextView jumlahOrganisasi, jumlahKepanitiaan, jumlahPrestasi, btnLogOut;
+    ShapeableImageView ivFotoProfile;
+    Uri imageUri = null;
+    FirebaseStorage mStorage;
+    private FirebaseAuth mAuth;
     private String mParam1;
     private String mParam2;
 
@@ -116,12 +125,18 @@ public class ProfilePageFragment extends Fragment {
         tvProfileUniversityPeriod = view.findViewById(R.id.tvProfileUniversityPeriod);
         tvProfileSkills = view.findViewById(R.id.tvProfileSkills);
         tvProfileDeskripsi = view.findViewById(R.id.tvProfileDeskripsi);
+        ivFotoProfile = view.findViewById(R.id.ivFotoProfile);
+        btnLogOut = view.findViewById(R.id.btn_logout);
+
+        mStorage = FirebaseStorage.getInstance();
 
         jumlahOrganisasi = view.findViewById(R.id.jmlhOrganisasi);
         jumlahKepanitiaan = view.findViewById(R.id.jmlhKepanitiaan);
         jumlahPrestasi = view.findViewById(R.id.jmlhPrestasi);
 
         btn_edit_profile = view.findViewById(R.id.btn_edit_profile);
+
+        mAuth = FirebaseAuth.getInstance();
 
         String userKey = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -164,6 +179,13 @@ public class ProfilePageFragment extends Fragment {
 
         showData();
 
+        btnLogOut.setOnClickListener(v -> {
+            mAuth.signOut();
+            Intent logout = new Intent(getContext(), LoginPageActivity.class);
+            logout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(logout);
+        });
+
         btn_edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,6 +214,7 @@ public class ProfilePageFragment extends Fragment {
                                 sendData.putExtra("jumlahorganisasi", jumlahOrganisasi.getText().toString());
                                 sendData.putExtra("jumlahkepanitiaan", jumlahKepanitiaan.getText().toString());
                                 sendData.putExtra("jumlahprestasi", jumlahPrestasi.getText().toString());
+                                sendData.putExtra("fotoProfile", user.getImageProfile());
 
                                 startActivity(sendData);
                             }
@@ -229,6 +252,7 @@ public class ProfilePageFragment extends Fragment {
                         tvProfileUniversityPeriod.setText(user.getUniversityPeriod());
                         tvProfileSkills.setText(user.getSkills());
                         tvProfileDeskripsi.setText(user.getSelfDescription());
+                        Picasso.get().load(user.getImageProfile()).into(ivFotoProfile);
                     }
                 }
             }

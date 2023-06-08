@@ -28,17 +28,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="108dp"
                 android:layout_height="108dp"
                 android:background="@drawable/ic_circle_white"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_avatar_profile" />
-            </LinearLayout>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_FotoProfile"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:src="@drawable/ic_avatar_profile"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
+            </RelativeLayout>
 
 
         </LinearLayout>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class RegisterPageActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
