@@ -95,7 +95,7 @@ public class DocumentPageFragment extends Fragment {
     }
 
     private void createPDF() {
-        View view = LayoutInflater.from(requireContext()).inflate(R.layout.view_print_layout, null);
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.activity_print_view, null);
         DisplayMetrics displayMetrics = new DisplayMetrics();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
