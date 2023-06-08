@@ -22,4 +22,9 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="biograph">My Name Is Laura Anderson lorem empus  id fringilla molestie ornare diam in olestie ipsum etium rosn ollicitudin est, porttitor amet hitmassa Done cporttitor dolor shit dolor kiren lorem nisl molestie pretium etfring. is the shitp lorem ipcum retiumci amet is tudinest.moles tium lorem olestie pretium apaza all the rosen.  fringilla lorem ipsum .
+orem nisl molestie pretium etfring. is the shitp lorem ipcum retiumci amet is tudinest.moles tium lorem olestie pretium apaza all the rosen.  fringilla lorem ipsum .</string>
+    <string name="lorem_pisum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+</string>
 </resources>
