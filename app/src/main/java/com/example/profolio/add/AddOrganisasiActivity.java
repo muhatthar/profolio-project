@@ -98,7 +98,6 @@ public class AddOrganisasiActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
                                 String getSertifOrganisasi = task.getResult().toString();
-
                                 String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                                 database.child("Users").child(userId).child("Organisasi").push().setValue(new OrganisasiModel(getNamaOrganisasi, getJabatanOrganisasi, getTahunMulaiOrganisasi, getTahunSelesaiOrganisasi, getDeskripsiOrganisasi, getSertifOrganisasi)).addOnSuccessListener(new OnSuccessListener<Void>() {

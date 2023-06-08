@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.example.profolio.adapterfragment.SectionPagerAdapter;
 import com.example.profolio.R;
+import com.example.profolio.modelfragment.UserModel;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +40,7 @@ public class HomePageFragment extends Fragment {
     TabLayout tabLayout;
     TextView helloUser, slogan;
     LinearLayout containerRecyclerView;
+    ShapeableImageView ivFotoProfile;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     // TODO: Rename parameter arguments, choose names that match
@@ -93,21 +97,26 @@ public class HomePageFragment extends Fragment {
         helloUser = view.findViewById(R.id.helloUser);
         slogan = view.findViewById(R.id.slogan);
         helloUser = view.findViewById(R.id.helloUser);
+        ivFotoProfile = view.findViewById(R.id.iv_FotoProfile);
 
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database.child("Users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+        database.child("Users").child(userId).child("UserData").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
-                        String username = userSnapshot.child("username").getValue(String.class);
-                        if (username != null) {
-                            helloUser.setText("Hello, " + username);
-                            break;
-                        }
-                    }
+                    UserModel user = snapshot.getValue(UserModel.class);
+                    user.setKey(snapshot.getKey());
+//                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+//                        String username = userSnapshot.child("username").getValue(String.class);
+//                        String fotoProfile = userSnapshot.child("imageProfile").getValue(String.class);
+//                        if (username != null) {
+//                            helloUser.setText("Hello, " + username);
+//                            break;
+//                        }
+//                    }
+                    helloUser.setText("Hello, " + user.getUsername());
+                    Picasso.get().load(user.getImageProfile()).into(ivFotoProfile);
                 }
-
             }
 
             @Override

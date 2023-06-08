@@ -80,15 +80,16 @@ public class LoginPageActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(v -> {
             signIn(etEmail.getText().toString(), etPassword.getText().toString());
+            finish();
         });
     }
 
-//    @Override
-//    public void onStart(){
-//        super.onStart();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        updateUI(currentUser);
-//    }
+    @Override
+    public void onStart(){
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
 
     public void updateUI(FirebaseUser user){
         if (user != null){

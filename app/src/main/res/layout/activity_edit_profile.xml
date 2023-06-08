@@ -49,11 +49,12 @@
                 android:foreground="@drawable/ic_camera"
                 android:foregroundGravity="center" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
-                android:src="@drawable/ic_avatar_profile" />
+                android:src="@drawable/ic_avatar_profile"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
         </RelativeLayout>
     </LinearLayout>
 

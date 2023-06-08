@@ -13,6 +13,7 @@ public class UserModel {
     private String skills;
     private String selfDescription;
     private String key;
+    private String imageProfile;
 
     public UserModel() {
 
@@ -20,7 +21,7 @@ public class UserModel {
 
     public UserModel(String username, String firstName, String lastName, String phone,
                      String email, String seniorHighSchool, String seniorHighSchoolPeriod, String university,
-                     String universityPeriod, String skills, String selfDescription) {
+                     String universityPeriod, String skills, String selfDescription, String imageProfile) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,6 +33,7 @@ public class UserModel {
         this.universityPeriod = universityPeriod;
         this.skills = skills;
         this.selfDescription = selfDescription;
+        this.imageProfile = imageProfile;
     }
 
     public String getUsername() {
@@ -128,5 +130,13 @@ public class UserModel {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getImageProfile() {
+        return imageProfile;
+    }
+
+    public void setImageProfile(String imageProfile) {
+        this.imageProfile = imageProfile;
     }
 }

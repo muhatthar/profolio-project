@@ -54,10 +54,12 @@
             android:background="@drawable/ic_circle_white"
             android:gravity="center">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivFotoProfile"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
-                android:src="@drawable/ic_avatar_profile" />
+                android:src="@drawable/ic_avatar_profile"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
         </LinearLayout>
 
     </LinearLayout>
