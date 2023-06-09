@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.profolio.R;
 import com.example.profolio.homepage.HomePageActivity;
+import com.example.profolio.loading.LoadingActivity;
 import com.example.profolio.modelfragment.UserModel;
 import com.example.profolio.register.RegisterPageActivity;
 import com.example.profolio.userdata.UserDataActivity;
@@ -80,7 +81,7 @@ public class LoginPageActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(v -> {
             signIn(etEmail.getText().toString(), etPassword.getText().toString());
-            finish();
+//            finish();
         });
     }
 
@@ -93,7 +94,7 @@ public class LoginPageActivity extends AppCompatActivity {
 
     public void updateUI(FirebaseUser user){
         if (user != null){
-            Intent loginNext = new Intent(LoginPageActivity.this, HomePageActivity.class);
+            Intent loginNext = new Intent(LoginPageActivity.this, LoadingActivity.class);
             startActivity(loginNext);
 
         } else {
