@@ -19,6 +19,9 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.profolio.R;
@@ -45,6 +48,7 @@ public class DocumentPageFragment extends Fragment {
 
     AppCompatButton btn_generate;
     private static final int REQUEST_CODE = 1232;
+    LinearLayout card, header_title;
     private String mParam1;
     private String mParam2;
 
@@ -82,15 +86,22 @@ public class DocumentPageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_document_page, container, false);
 
         btn_generate = view.findViewById(R.id.btn_generate);
+        card = view.findViewById(R.id.cardCreateCV);
+        header_title = view.findViewById(R.id.header_title);
 
         askPermissions();
 
+        Animation animation = new AlphaAnimation(0.0f, 1.0f);
+        animation.setDuration(1000);
+
+        card.setAnimation(animation);
+        header_title.setAnimation(animation);
+
         btn_generate.setOnClickListener(v -> {
-//            createPDF();
             Intent next = new Intent(getContext(), PrintViewActivity.class);
             startActivity(next);
         });

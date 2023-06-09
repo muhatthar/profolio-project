@@ -19,6 +19,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,6 +84,11 @@ public class PrintViewActivity extends AppCompatActivity {
         selfDeskripsi = findViewById(R.id.selfDeskripsi);
         imgCV = findViewById(R.id.imgCV);
         print = findViewById(R.id.btn_print);
+
+        Animation animation = new AlphaAnimation(0.0f, 1.0f);
+        animation.setDuration(1000);
+
+        print.setAnimation(animation);
 
         print.setOnClickListener(v -> {
             createPDF();
