@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.profolio.R;
+import com.example.profolio.printlayout.PrintViewActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -89,7 +90,9 @@ public class DocumentPageFragment extends Fragment {
         askPermissions();
 
         btn_generate.setOnClickListener(v -> {
-            createPDF();
+//            createPDF();
+            Intent next = new Intent(getContext(), PrintViewActivity.class);
+            startActivity(next);
         });
         return view;
     }

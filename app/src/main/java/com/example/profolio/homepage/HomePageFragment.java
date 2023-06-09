@@ -106,14 +106,6 @@ public class HomePageFragment extends Fragment {
                 if (snapshot.exists()) {
                     UserModel user = snapshot.getValue(UserModel.class);
                     user.setKey(snapshot.getKey());
-//                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
-//                        String username = userSnapshot.child("username").getValue(String.class);
-//                        String fotoProfile = userSnapshot.child("imageProfile").getValue(String.class);
-//                        if (username != null) {
-//                            helloUser.setText("Hello, " + username);
-//                            break;
-//                        }
-//                    }
                     helloUser.setText("Hello, " + user.getUsername());
                     Picasso.get().load(user.getImageProfile()).into(ivFotoProfile);
                 }

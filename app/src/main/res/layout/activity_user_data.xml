@@ -195,7 +195,7 @@
                     android:background="@drawable/bginputtask"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center_vertical"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textColor="@color/subcaption"
                     android:paddingStart="10dp"
                     android:hint="+6281xxxxxxxxx"
@@ -227,7 +227,7 @@
                     android:inputType="text"
                     android:textColor="@color/subcaption"
                     android:paddingStart="10dp"
-                    android:hint="aleaxanderPandjaitan@gmail.com"
+                    android:hint="proteam@gmail.com"
                     android:textColorHint="@color/subcaption"
                     android:textSize="12sp" />
             </LinearLayout>

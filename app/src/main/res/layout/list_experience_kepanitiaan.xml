@@ -19,7 +19,7 @@
             android:id="@+id/tvTitleCV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Organisasi/Kepanitiaan/Prestasi"
+            android:text="Title"
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold"></TextView>
@@ -52,7 +52,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="tvPeriodeCV"
+                    android:id="@+id/tvPeriodeCV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
