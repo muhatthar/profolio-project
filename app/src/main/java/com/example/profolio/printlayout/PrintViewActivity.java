@@ -51,7 +51,7 @@ import java.util.List;
 
 public class PrintViewActivity extends AppCompatActivity {
 
-    TextView firstName, lastName, position, phoneNumber, email, sma, smaPeriod, university, universityPeriod, skills, selfDeskripsi;
+    TextView firstName, lastName, position, phoneNumber, email, sma, smaPeriod, university, universityPeriod, skills, selfDeskripsi, introName;
     ImageView imgCV;
     AppCompatButton print;
     private static final int REQUEST_CODE = 1232;
@@ -82,6 +82,7 @@ public class PrintViewActivity extends AppCompatActivity {
         universityPeriod = findViewById(R.id.universityPeriod);
         skills = findViewById(R.id.skills);
         selfDeskripsi = findViewById(R.id.selfDeskripsi);
+        introName = findViewById(R.id.introName);
         imgCV = findViewById(R.id.imgCV);
         print = findViewById(R.id.btn_print);
 
@@ -131,6 +132,7 @@ public class PrintViewActivity extends AppCompatActivity {
                     universityPeriod.setText(user.getUniversityPeriod());
                     skills.setText(user.getSkills());
                     selfDeskripsi.setText(user.getSelfDescription());
+                    introName.setText("Hello, " + user.getUsername());
                     Picasso.get().load(user.getImageProfile()).into(imgCV);
                 }
             }
@@ -176,9 +178,9 @@ public class PrintViewActivity extends AppCompatActivity {
                     kepanitiaan.setKey(item.getKey());
                     kepanitiaanItems.add(kepanitiaan);
                 }
-                Collections.reverse(organisasiItems);
+                Collections.reverse(kepanitiaanItems);
                 adapterCVKepanitiaan = new AdapterCVKepanitiaan(kepanitiaanItems, PrintViewActivity.this);
-                cvRecyclerViewKepanitiaan.setAdapter(adapterCVOrganisasi);
+                cvRecyclerViewKepanitiaan.setAdapter(adapterCVKepanitiaan);
             }
 
             @Override
@@ -198,9 +200,9 @@ public class PrintViewActivity extends AppCompatActivity {
                     prestasi.setKey(item.getKey());
                     prestasiItems.add(prestasi);
                 }
-                Collections.reverse(organisasiItems);
+                Collections.reverse(prestasiItems);
                 adapterCVPrestasi = new AdapterCVPrestasi(prestasiItems, PrintViewActivity.this);
-                cvRecyclerViewPrestasi.setAdapter(adapterCVOrganisasi);
+                cvRecyclerViewPrestasi.setAdapter(adapterCVPrestasi);
             }
 
             @Override
